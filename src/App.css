@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;600;700&family=Martian+Mono:wght@100..800&display=swap');
+
+:root {
+  --color-primary: #380703;
+  --color-accent: #fc3212;
+  --color-lavender: #cac8e4;
+  --color-pink: #fce5dd;
+  --color-white: #ffffff;
+  --color-black: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Martian Mono', monospace;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Gupter', serif;
+}
+
+button,
+a {
+  font-family: inherit;
+}
+
+
+.navbar {
+  width: 100%;
+  height: 80px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-white);
+}
+
+.navbar-logo {
+  font-family: 'Gupter', serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 32px;
+}
+
+.navbar-links a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: var(--color-accent);
+}
+
+.navbar-button {
+  padding: 12px 20px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 999px;
+  transition: transform 0.2s ease;
+}
+
+.navbar-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   NAVBAR - MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-button {
+    display: none;
+  }
+
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  min-height: calc(100vh - 80px);
+  padding: 80px 5%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 64px;
+
+  background-color: var(--color-pink);
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero-eyebrow {
+  display: block;
+  margin-bottom: 24px;
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  margin-bottom: 32px;
+
+  font-size: clamp(56px, 7vw, 100px);
+  line-height: 0.9;
+  font-weight: 600;
+}
+
+.hero p {
+  max-width: 550px;
+  margin-bottom: 40px;
+
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-button-primary,
+.hero-button-secondary {
+  padding: 14px 24px;
+
+  border-radius: 999px;
+
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.hero-button-primary {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.hero-button-secondary {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.hero-image {
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 30px;
+
+  background-color: var(--color-lavender);
+}
+
+.hero-image span {
+  font-size: 14px;
+}
+
+
+/* =========================
+   HERO - MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: auto;
+    padding: 60px 20px;
+
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero h1 {
+    font-size: 58px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-image {
+    min-height: 350px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-button-primary,
+  .hero-button-secondary {
+    text-align: center;
+  }
+
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+  padding: 120px 5%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+
+  background-color: var(--color-white);
+}
+
+.about-header {
+  max-width: 600px;
+}
+
+.about-eyebrow {
+  display: block;
+  margin-bottom: 24px;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.about h2 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 0.95;
+  font-weight: 500;
+}
+
+.about-content {
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* =========================
+   ABOUT - MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .about {
+    padding: 80px 20px;
+
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about h2 {
+    font-size: 48px;
+  }
+
+}
+
+
+/* =========================
+   WHY BESITO
+========================= */
+
+.why-besito {
+  padding: 120px 5%;
+
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.why-besito-header {
+  max-width: 700px;
+  margin-bottom: 80px;
+}
+
+.why-besito-eyebrow {
+  display: block;
+  margin-bottom: 24px;
+
+  color: var(--color-accent);
+
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.why-besito h2 {
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 0.95;
+  font-weight: 500;
+}
+
+.why-besito-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.why-card {
+  min-height: 320px;
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+}
+
+.why-card-number {
+  font-size: 12px;
+  color: var(--color-accent);
+}
+
+.why-card h3 {
+  margin: 40px 0 20px;
+
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.why-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 0.8;
+}
+
+
+/* =========================
+   WHY BESITO - MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .why-besito {
+    padding: 80px 20px;
+  }
+
+  .why-besito-header {
+    margin-bottom: 48px;
+  }
+
+  .why-besito-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .why-card {
+    min-height: 280px;
+  }
+
+}
+
+
+/* =========================
+   PROBLEM
+========================= */
+
+.problem {
+  padding: 120px 5%;
+
+  background-color: var(--color-lavender);
+}
+
+.problem-content {
+  max-width: 900px;
+}
+
+.problem-eyebrow {
+  display: block;
+  margin-bottom: 24px;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.problem h2 {
+  margin-bottom: 32px;
+
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 0.95;
+  font-weight: 500;
+}
+
+.problem p {
+  max-width: 650px;
+
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   PROBLEM - MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .problem {
+    padding: 80px 20px;
+  }
+
+  .problem h2 {
+    font-size: 48px;
+  }
+
+  .problem p {
+    font-size: 16px;
+  }
+
+}
