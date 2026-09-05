@@ -3,26 +3,32 @@ const About = () => {
         <section className="about" id="nosotros">
 
             <div className="about-header">
+
                 <span className="about-eyebrow">
                     ¿QUÉ ES BESITO?
                 </span>
 
                 <h2>
-                    El snack que los colaboradores esperan cada semana.
+                    Somos la empresa que los colaboradores esperan cada semana.
                 </h2>
+
             </div>
 
             <div className="about-content">
 
                 <p>
-                    Ofrecemos soluciones de snacks para empresas que buscan
-                    potenciar la experiencia de sus colaboradores.
+                    Nacimos para hacer que comer un poquito mejor en el trabajo
+                    sea algo que realmente den ganas de hacer.
                 </p>
 
                 <p>
-                    Combinamos calidad, variedad, inclusión y una experiencia
-                    que se renueva con cada entrega.
+                    No buscamos decirle a nadie cómo comer. Elegimos snacks ricos,
+                    variados y de calidad que acompañen el día real de trabajo.
                 </p>
+
+                <strong>
+                    Rico primero. Saludable después.
+                </strong>
 
             </div>
 

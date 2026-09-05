@@ -1,27 +1,27 @@
+import logoBesito from '../assets/besito-fondoblanco.jpg'
+
 
 const Navbar = () => {
-
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
-        BESITO
-      </div>
+
+      <a href="#inicio" className="navbar-logo">
+        <img src={logoBesito} alt="Besito" />
+      </a>
 
       <div className="navbar-links">
         <a href="#nosotros">Nosotros</a>
-        <a href="#productos">Productos</a>
-        <a href="#porque-besito">¿Por qué Besito?</a>
+        <a href="#packs">Packs</a>
         <a href="#como-trabajamos">Cómo trabajamos</a>
+        <a href="#faq">Preguntas frecuentes</a>
       </div>
 
-      <div>
-        <a className="navbar-button" href="#presupuesto">
-          Solicitar propuesta
-        </a>
-      </div>
+      <a className="navbar-button" href="#presupuesto">
+        Solicitar propuesta
+      </a>
+
     </nav>
   )
 }
 
 export default Navbar
-

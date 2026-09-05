@@ -5,7 +5,7 @@ const Hero = () => {
             <div className="hero-content">
 
                 <span className="hero-eyebrow">
-                    SNACKS CORPORATIVOS
+                    SNACKS PARA EMPRESAS
                 </span>
 
                 <h1>
@@ -13,26 +13,31 @@ const Hero = () => {
                 </h1>
 
                 <p>
-                   Snacks ricos, variados y un poquito mejor para acompañar el día de tu equipo.
+                    Snacks ricos, variados y un poquito mejor para acompañar
+                    el día de tu equipo.
                 </p>
 
                 <div className="hero-actions">
 
                     <a href="#presupuesto" className="hero-button-primary">
-                        QUIERO BESITO EN MI EMPRESA
+                        Quiero Besito en mi empresa
                     </a>
 
-                    <a href="#productos" className="hero-button-secondary">
-                        Ver productos
+                    <a href="#como-trabajamos" className="hero-button-secondary">
+                        Ver cómo trabajamos
                     </a>
 
                 </div>
+
+                <span className="hero-message">
+                    Un poquito mejor ya es un montón.
+                </span>
 
             </div>
 
             <div className="hero-image">
                 <span>
-                    Foto de productos
+                    Foto de un pack real de Besito
                 </span>
             </div>
 
