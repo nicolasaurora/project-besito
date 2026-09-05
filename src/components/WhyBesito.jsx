@@ -8,10 +8,6 @@ const WhyBesito = () => {
                     ¿POR QUÉ BESITO?
                 </span>
 
-                <h2>
-                    Rico primero, saludable después.
-                </h2>
-
             </div>
 
             <div className="why-besito-cards">

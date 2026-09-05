@@ -42,6 +42,17 @@ a {
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-white);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  transition: height 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+}
+
+.navbar.is-scrolled {
+  height: 76px;
+  box-shadow: 0 8px 24px rgba(56, 7, 3, 0.1);
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
 }
 
 .navbar-logo {
@@ -58,6 +69,11 @@ a {
   object-fit: contain;
   display: block;
   padding: 5% 0;
+  transition: height 0.35s ease, transform 0.35s ease;
+}
+
+.navbar.is-scrolled .navbar-logo img {
+  height: 58px;
 }
 
 .navbar-links {
@@ -83,11 +99,13 @@ a {
   text-decoration: none;
   font-size: 12px;
   border-radius: 999px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .navbar-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  background-color: #e92c0e;
+  box-shadow: 0 5px 12px rgba(252, 50, 18, 0.22);
 }
 
 
@@ -102,12 +120,20 @@ a {
     padding: 0 20px;
   }
 
+  .navbar.is-scrolled {
+    height: 72px;
+  }
+
   .navbar-links {
     display: none;
   }
 
   .navbar-logo img {
     height: 74px;
+  }
+
+  .navbar.is-scrolled .navbar-logo img {
+    height: 56px;
   }
 
   .navbar-button {
@@ -121,8 +147,8 @@ a {
 ========================= */
 
 .hero {
-  min-height: calc(100vh - 80px);
-  padding: 80px 5%;
+  min-height: calc(100vh - 112px);
+  padding: 72px 5% 86px;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -140,7 +166,7 @@ a {
   display: block;
   margin-bottom: 24px;
 
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 2px;
 }
@@ -151,6 +177,7 @@ a {
   font-size: clamp(56px, 7vw, 100px);
   line-height: 0.9;
   font-weight: 600;
+  color: var(--color-primary);
 }
 
 .hero p {
@@ -189,18 +216,78 @@ a {
 
 .hero-image {
   min-height: 500px;
+  position: relative;
+  overflow: visible;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   border-radius: 30px;
+  border: 1px solid rgba(56, 7, 3, 0.12);
+  box-shadow: 14px 14px 0 var(--color-lavender);
 
-  background-color: var(--color-lavender);
+  background-color: var(--color-white);
 }
 
-.hero-image span {
-  font-size: 14px;
+.hero-pack {
+  width: min(68%, 300px);
+  min-height: 370px;
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+  background-color: var(--color-primary);
+  box-shadow: 10px 12px 0 var(--color-accent);
+  transform: rotate(-7deg);
+}
+
+.hero-pack img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.hero-pack span {
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.hero-sticker {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  width: 126px;
+  height: 126px;
+  place-items: center;
+  border-radius: 50%;
+  font-family: 'Gupter', serif;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 0.84;
+  text-align: center;
+}
+
+.hero-sticker-top {
+  top: 30px;
+  right: -25px;
+  background-color: var(--color-lavender);
+  transform: rotate(10deg);
+}
+
+.hero-sticker-bottom {
+  bottom: 24px;
+  left: -30px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  transform: rotate(-10deg);
 }
 
 .hero-message {
@@ -239,6 +326,33 @@ a {
 
   .hero-image {
     min-height: 350px;
+    margin: 0 14px;
+  }
+
+  .hero-pack {
+    min-height: 250px;
+    padding: 22px;
+  }
+
+  .hero-pack img {
+    width: 105px;
+    height: 105px;
+  }
+
+  .hero-sticker {
+    width: 94px;
+    height: 94px;
+    font-size: 19px;
+  }
+
+  .hero-sticker-top {
+    top: 16px;
+    right: -20px;
+  }
+
+  .hero-sticker-bottom {
+    bottom: 14px;
+    left: -20px;
   }
 
   .hero-actions {
@@ -259,15 +373,16 @@ a {
 ========================= */
 
 .about {
-  min-height: 70vh;
-  padding: 100px 5%;
+  min-height: 65vh;
+  padding: 120px 5%;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 10vw;
   align-items: center;
 
-  background-color: var(--color-white);
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .about-header {
@@ -279,36 +394,46 @@ a {
   display: block;
   margin-bottom: 24px;
 
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
+  color: var(--color-accent);
 }
 
+
 .about h2 {
-  font-size: clamp(42px, 5vw, 72px);
-  line-height: 0.95;
+  max-width: 620px;
+  font-size: clamp(52px, 5.5vw, 82px);
+  line-height: 0.9;
   font-weight: 500;
+  color: var(--color-pink);
 }
 
 .about-content {
-  max-width: 650px;
+  max-width: 500px;
+  padding: 42px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 24px;
+
+  background-color: var(--color-pink);
+  color: var(--color-primary);
+  border-radius: 4px 42px 4px 42px;
+  box-shadow: 12px 12px 0 var(--color-accent);
 }
 
 .about-content p {
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.85;
 }
 
 .about-content strong {
-  margin-top: 8px;
+  margin-top: 16px;
 
   font-family: 'Gupter', serif;
-  font-size: 30px;
-  line-height: 1.1;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 0.95;
 
   color: var(--color-accent);
 }
@@ -331,6 +456,11 @@ a {
     font-size: 48px;
   }
 
+  .about-content {
+    padding: 30px 26px;
+    box-shadow: 8px 8px 0 var(--color-accent);
+  }
+
 }
 
 
@@ -341,12 +471,11 @@ a {
 .why-besito {
   padding: 120px 5%;
 
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-lavender);
+  color: var(--color-primary);
 }
 
 .why-besito-header {
-  max-width: 700px;
   margin-bottom: 80px;
 }
 
@@ -356,11 +485,13 @@ a {
 
   color: var(--color-accent);
 
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
+  text-align: center;
 }
 
 .why-besito h2 {
+  max-width: 700px;
   font-size: clamp(48px, 6vw, 80px);
   line-height: 0.95;
   font-weight: 500;
@@ -380,8 +511,19 @@ a {
   flex-direction: column;
   justify-content: space-between;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: var(--color-white);
+  border: 1px solid rgba(56, 7, 3, 0.14);
   border-radius: 24px;
+  box-shadow: 10px 10px 0 var(--color-accent);
+}
+
+.why-card:nth-child(2),
+.why-card:nth-child(3),
+.why-card:nth-child(4) {
+  background-color: var(--color-white);
+  border-color: rgba(56, 7, 3, 0.14);
+  color: var(--color-primary);
+  box-shadow: 10px 10px 0 var(--color-accent);
 }
 
 .why-card-number {
@@ -401,6 +543,21 @@ a {
   font-size: 14px;
   line-height: 1.7;
   opacity: 0.8;
+}
+
+.why-card:nth-child(4) .why-card-number {
+  color: var(--color-accent);
+}
+
+/* Todas las cards comparten el rosa suave de las cards 02 y 03. */
+.why-besito .why-card,
+.why-besito .why-card:nth-child(2),
+.why-besito .why-card:nth-child(3),
+.why-besito .why-card:nth-child(4) {
+  background-color: var(--color-white);
+  border-color: rgba(56, 7, 3, 0.14);
+  color: var(--color-primary);
+  box-shadow: 10px 10px 0 var(--color-accent);
 }
 
 
@@ -424,6 +581,11 @@ a {
 
   .why-card {
     min-height: 280px;
+    box-shadow: 7px 7px 0 var(--color-accent);
+  }
+
+  .why-card:nth-child(4) {
+    box-shadow: 7px 7px 0 var(--color-accent);
   }
 
 }
@@ -447,7 +609,7 @@ a {
   display: block;
   margin-bottom: 24px;
 
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
 }
 
@@ -508,7 +670,7 @@ a {
   display: block;
   margin-bottom: 24px;
 
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
 }
 
@@ -707,7 +869,7 @@ a {
   display: block;
   margin-bottom: 24px;
 
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
 }
 
@@ -715,6 +877,7 @@ a {
   font-size: clamp(48px, 6vw, 80px);
   line-height: 0.95;
   font-weight: 500;
+  color: var(--color-primary);
 }
 
 .how-we-work-steps {
@@ -820,7 +983,7 @@ a {
   display: block;
   margin-bottom: 24px;
 
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
 }
 
@@ -925,7 +1088,7 @@ a {
 .final-cta-eyebrow {
   margin-bottom: 24px;
 
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
 }
 
@@ -1138,7 +1301,7 @@ a {
   display: block;
   margin-bottom: 24px;
 
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
 }
 

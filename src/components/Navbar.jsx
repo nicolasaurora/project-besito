@@ -1,9 +1,19 @@
-import logoBesito from '../assets/besito-fondoblanco.jpg'
+import logoBesito from '../assets/besito-logo1.png'
+import { useEffect, useState } from 'react'
 
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const updateNavbar = () => setIsScrolled(window.scrollY > 70)
+    updateNavbar()
+    window.addEventListener('scroll', updateNavbar, { passive: true })
+    return () => window.removeEventListener('scroll', updateNavbar)
+  }, [])
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isScrolled ? 'is-scrolled' : ''}`}>
 
       <a href="#inicio" className="navbar-logo">
         <img src={logoBesito} alt="Besito" />
