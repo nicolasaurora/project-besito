@@ -35,24 +35,6 @@ const PacksShowcase = () => {
 
             </div>
 
-            <div className="brands">
-
-                <span className="brands-title">
-                    MARCAS CON LAS QUE TRABAJAMOS
-                </span>
-
-                <div className="brands-list">
-
-                    <span>MARCA 01</span>
-                    <span>MARCA 02</span>
-                    <span>MARCA 03</span>
-                    <span>MARCA 04</span>
-                    <span>MARCA 05</span>
-
-                </div>
-
-            </div>
-
         </section>
     )
 }

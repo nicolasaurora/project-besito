@@ -1,3 +1,5 @@
+import BrandsCarousel from './BrandsCarousel'
+
 const Packs = () => {
   return (
     <section className="packs" id="packs">
@@ -75,15 +77,16 @@ const Packs = () => {
           <span>Sin TACC</span>
           <span>Vegano</span>
           <span>Sin azúcar</span>
-          <span>Horneados</span>
-          <span>Frutos secos</span>
+          <span>Proteico</span>
         </div>
 
       </div>
 
-      <a href="#presupuesto" className="packs-button">
-        Quiero una propuesta
-      </a>
+      <div className="brands">
+        <span className="brands-title">MARCAS CON LAS QUE TRABAJAMOS</span>
+
+        <BrandsCarousel />
+      </div>
 
     </section>
   )
