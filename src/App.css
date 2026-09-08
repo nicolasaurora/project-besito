@@ -30,15 +30,13 @@ h4 {
 
 .text-reveal-line {
   display: block;
-  overflow: hidden;
-  padding: 0.08em 0 0.2em;
-  margin: -0.08em 0 -0.2em;
 }
 
 .text-reveal-line > span {
   display: block;
-  will-change: transform;
+  will-change: transform, opacity;
 }
+
 
 button,
 a {

@@ -35,10 +35,17 @@ export default function PageAnimations() {
 
       const heroTimeline = gsap.timeline({ delay: 0.08 })
       heroTimeline
-        .from('.hero-eyebrow', { autoAlpha: 0, y: 14, duration: 0.42, ease: 'power2.out' })
-        .from(heroLines, { yPercent: -108, duration: 0.82, stagger: 0.09, ease: 'power4.out' }, '-=0.1')
-        .from('.hero-content > p', { autoAlpha: 0, y: 16, duration: 0.58, ease: 'power2.out' }, '-=0.38')
-        .from('.hero-actions, .hero-message', { autoAlpha: 0, y: 14, duration: 0.55, stagger: 0.08, ease: 'power2.out' }, '-=0.3')
+        .from('.hero-eyebrow', { autoAlpha: 0, y: 14, duration: 0.5, ease: 'power2.out' })
+        .from(heroLines, {
+          autoAlpha: 0,
+          y: 20,
+          scale: 0.985,
+          duration: 0.82,
+          stagger: 0.12,
+          ease: 'power3.out',
+        }, '-=0.1')
+        .from('.hero-content > p', { autoAlpha: 0, y: 16, duration: 0.65, ease: 'power2.out' }, '-=0.42')
+        .from('.hero-actions, .hero-message', { autoAlpha: 0, y: 14, duration: 0.62, stagger: 0.1, ease: 'power2.out' }, '-=0.34')
 
       textSequences.forEach(({ trigger, eyebrow, heading, body }) => {
         if (!document.querySelector(trigger)) return
