@@ -28,6 +28,18 @@ h4 {
   font-family: 'Gupter', serif;
 }
 
+.text-reveal-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.08em 0 0.2em;
+  margin: -0.08em 0 -0.2em;
+}
+
+.text-reveal-line > span {
+  display: block;
+  will-change: transform;
+}
+
 button,
 a {
   font-family: inherit;
@@ -1132,6 +1144,7 @@ a {
   .faq-item summary {
     font-size: 21px;
   }
+
 
 }
 

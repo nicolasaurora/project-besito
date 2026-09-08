@@ -3,7 +3,6 @@ import About from './components/About'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import WhyBesito from './components/WhyBesito'
-import Problem from './components/Problem'
 import Packs from './components/Packs'
 import HowWeWork from './components/HowWeWork'
 import Faq from './components/Faq'
@@ -23,7 +22,6 @@ function App() {
       <main>
         <Hero />
         <About />
-        {/* <Problem /> */}
         <WhyBesito />
         <Packs />
         <PacksShowcase />

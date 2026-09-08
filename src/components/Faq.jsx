@@ -1,67 +1,55 @@
+import { useState } from 'react'
+
+const questions = [
+  {
+    question: '¿Se puede adaptar la propuesta al presupuesto de la empresa?',
+    answer: 'Sí. Armamos la propuesta teniendo en cuenta cantidad de personas, frecuencia y presupuesto.',
+  },
+  {
+    question: '¿Tienen opciones Sin TACC o veganas?',
+    answer: 'Sí. Podemos contemplar diferentes preferencias y necesidades alimentarias dentro de la propuesta.',
+  },
+  {
+    question: '¿Cada cuánto se pueden hacer las entregas?',
+    answer: 'La frecuencia se coordina según la necesidad y dinámica de cada empresa.',
+  },
+  {
+    question: '¿Cómo solicito una propuesta?',
+    answer: 'Nos contás sobre tu empresa y armamos una propuesta adaptada a tu equipo.',
+  },
+]
+
 const Faq = () => {
-    return (
-        <section className="faq" id="faq">
+  const [openIndex, setOpenIndex] = useState(null)
 
-            <div className="faq-header">
+  const toggleQuestion = (event, index) => {
+    event.preventDefault()
+    setOpenIndex((currentIndex) => (currentIndex === index ? null : index))
+  }
 
-                <span className="faq-eyebrow">
-                    PREGUNTAS FRECUENTES
-                </span>
+  return (
+    <section className="faq" id="faq">
+      <div className="faq-header">
+        <span className="faq-eyebrow">PREGUNTAS FRECUENTES</span>
+        <h2>Lo que suelen preguntarnos.</h2>
+      </div>
 
-                <h2>
-                    Lo que suelen preguntarnos.
-                </h2>
+      <div className="faq-list">
+        {questions.map(({ question, answer }, index) => {
+          const isOpen = openIndex === index
 
-            </div>
-
-            <div className="faq-list">
-
-                <details className="faq-item">
-                    <summary>
-                        ¿Se puede adaptar la propuesta al presupuesto de la empresa?
-                    </summary>
-
-                    <p>
-                        Sí. Armamos la propuesta teniendo en cuenta cantidad de personas,
-                        frecuencia y presupuesto.
-                    </p>
-                </details>
-
-                <details className="faq-item">
-                    <summary>
-                        ¿Tienen opciones Sin TACC o veganas?
-                    </summary>
-
-                    <p>
-                        Sí. Podemos contemplar diferentes preferencias y necesidades
-                        alimentarias dentro de la propuesta.
-                    </p>
-                </details>
-
-                <details className="faq-item">
-                    <summary>
-                        ¿Cada cuánto se pueden hacer las entregas?
-                    </summary>
-
-                    <p>
-                        La frecuencia se coordina según la necesidad y dinámica de cada empresa.
-                    </p>
-                </details>
-
-                <details className="faq-item">
-                    <summary>
-                        ¿Cómo solicito una propuesta?
-                    </summary>
-
-                    <p>
-                        Nos contás sobre tu empresa y armamos una propuesta adaptada a tu equipo.
-                    </p>
-                </details>
-
-            </div>
-
-        </section>
-    )
+          return (
+            <details className="faq-item" key={question} open={isOpen}>
+              <summary onClick={(event) => toggleQuestion(event, index)}>
+                {question}
+              </summary>
+              {isOpen && <p>{answer}</p>}
+            </details>
+          )
+        })}
+      </div>
+    </section>
+  )
 }
 
 export default Faq

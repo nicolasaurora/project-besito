@@ -1,5 +1,7 @@
 import logoBesito from '../assets/besito-logo1.png'
 
+import RevealTitle from './RevealTitle'
+
 const Hero = () => {
     return (
         <section className="hero" id="inicio">
@@ -10,9 +12,13 @@ const Hero = () => {
                     SNACKS PARA EMPRESAS
                 </span>
 
-                <h1>
-                    El snack que la gente espera que llegue a la oficina.
-                </h1>
+                <RevealTitle
+                    lines={[
+                        'El snack que la gente',
+                        'espera que llegue a',
+                        'la oficina.',
+                    ]}
+                />
 
                 <p>
                     Snacks ricos, variados y un poquito mejor para acompañar
