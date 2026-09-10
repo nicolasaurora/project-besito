@@ -9,20 +9,19 @@ const Hero = () => {
             <div className="hero-content">
 
                 <span className="hero-eyebrow">
-                    SNACKS PARA EMPRESAS
+                    BESITO PARA EMPRESAS
                 </span>
 
                 <RevealTitle
                     lines={[
                         'El snack que la gente',
                         'espera que llegue a',
-                        'la oficina.',
+                        'la oficina cada semana.',
                     ]}
                 />
 
                 <p>
-                    Snacks ricos, variados y un poquito mejor para acompañar
-                    el día de tu equipo.
+                    Un mimo para recargar energias y seguir.
                 </p>
 
                 <div className="hero-actions">
@@ -49,7 +48,7 @@ const Hero = () => {
                     <img src={logoBesito} alt="Besito" />
                     <span>SNACKS PARA<br />EMPRESAS</span>
                 </div>
-                <span className="hero-sticker hero-sticker-bottom">UN POQUITO<br />MEJOR</span>
+                <span className="hero-sticker hero-sticker-bottom">SALUDABLE<br />DESPUES.</span>
             </div>
 
         </section>

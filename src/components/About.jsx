@@ -1,3 +1,5 @@
+import CharacterReveal from './CharacterReveal'
+
 const About = () => {
     return (
         <section className="about" id="nosotros">
@@ -9,25 +11,23 @@ const About = () => {
                 </span>
 
                 <h2>
-                    Somos la empresa que los colaboradores esperan cada semana.
+                    Somos la empresa que hace que el día de trabajo se sienta un poquito mejor.
                 </h2>
+
+                <CharacterReveal
+                    text="No vendemos fruta, vendemos ganas de que llegue el snack."
+                />
 
             </div>
 
             <div className="about-content">
 
                 <p>
-                    Nacimos para hacer que comer un poquito mejor en el trabajo
-                    sea algo que realmente den ganas de hacer.
-                </p>
-
-                <p>
-                    No buscamos decirle a nadie cómo comer. Elegimos snacks ricos,
-                    variados y de calidad que acompañen el día real de trabajo.
+                    Nacimos para hacer que esos pequeños momentos del día tengan algo más: un snack rico, un mate, algo para compartir o simplemente una pausa para recargar energía.
                 </p>
 
                 <strong>
-                    Rico primero. Saludable después.
+                    Rico primero, saludable después.
                 </strong>
 
             </div>

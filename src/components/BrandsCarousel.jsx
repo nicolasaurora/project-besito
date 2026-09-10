@@ -1,6 +1,49 @@
 import { useEffect, useRef } from 'react'
+import aldevaLogo from '../assets/brands/Aldeva.png'
+import alwaLogo from '../assets/brands/alwa.jfif'
+import argendieLogo from '../assets/brands/argendie.jfif'
+import baldoLogo from '../assets/brands/baldo.png'
+import bastoniLogo from '../assets/brands/Bastoni Galletitas Naturales.jpg'
+import canariasLogo from '../assets/brands/canarias.png'
+import celienergyLogo from '../assets/brands/celienergy.jfif'
+import crackinesLogo from '../assets/brands/crackines.png'
+import elColonialLogo from '../assets/brands/el colonial.jfif'
+import entrenutLogo from '../assets/brands/entrenut.png'
+import epuyenLogo from '../assets/brands/epuyen logo.jfif'
+import jualLogo from '../assets/brands/Jual stevia.jfif'
+import kuatiLogo from '../assets/brands/kuati.png'
+import laTranquilinaLogo from '../assets/brands/La tranquilina.jfif'
+import lasforLogo from '../assets/brands/lasfor.png'
+import muecasLogo from '../assets/brands/MUECAS.png'
+import pampaGourmetLogo from '../assets/brands/Pampa gourmet.png'
+import pontLogo from '../assets/brands/Pont.jfif'
+import roapipoLogo from '../assets/brands/roapipo.jfif'
+import saborDeMadreLogo from '../assets/brands/sabor de madre.jfif'
+import wikLogo from '../assets/brands/Wik!.png'
 
-const brands = ['MARCA 01', 'MARCA 02', 'MARCA 03', 'MARCA 04', 'MARCA 05']
+const brands = [
+  { name: 'Aldeva', logo: aldevaLogo },
+  { name: 'Alwa', logo: alwaLogo },
+  { name: 'Argendie', logo: argendieLogo },
+  { name: 'Baldo', logo: baldoLogo },
+  { name: 'Bastoni Galletitas Naturales', logo: bastoniLogo },
+  { name: 'Canarias', logo: canariasLogo },
+  { name: 'CeliEnergy', logo: celienergyLogo },
+  { name: 'Crackines', logo: crackinesLogo },
+  { name: 'El Colonial', logo: elColonialLogo },
+  { name: 'Entrenut', logo: entrenutLogo },
+  { name: 'Epuyén', logo: epuyenLogo },
+  { name: 'Jual Stevia', logo: jualLogo },
+  { name: 'Kuati', logo: kuatiLogo },
+  { name: 'La Tranquilina', logo: laTranquilinaLogo },
+  { name: 'Lasfor', logo: lasforLogo },
+  { name: 'Muecas', logo: muecasLogo },
+  { name: 'Pampa Gourmet', logo: pampaGourmetLogo },
+  { name: 'Pont', logo: pontLogo },
+  { name: 'Roapipó', logo: roapipoLogo },
+  { name: 'Sabor de Madre', logo: saborDeMadreLogo },
+  { name: 'Wik!', logo: wikLogo },
+]
 
 export default function BrandsCarousel() {
   const carouselRef = useRef(null)
@@ -71,9 +114,9 @@ export default function BrandsCarousel() {
 
   return <div className="brands-carousel" ref={carouselRef} aria-label="Marcas con las que trabajamos">
     <div className="brands-list" ref={trackRef}>
-      {brands.map(brand => <span key={brand}>{brand}</span>)}
-      {brands.map(brand => <span key={`${brand}-duplicate`} aria-hidden="true">{brand}</span>)}
-      {brands.map(brand => <span key={`${brand}-duplicate-2`} aria-hidden="true">{brand}</span>)}
+      {brands.map(({ name, logo }) => <div className="brand-logo" key={name}><img src={logo} alt={name} draggable="false" /></div>)}
+      {brands.map(({ name, logo }) => <div className="brand-logo" key={`${name}-duplicate`} aria-hidden="true"><img src={logo} alt="" draggable="false" /></div>)}
+      {brands.map(({ name, logo }) => <div className="brand-logo" key={`${name}-duplicate-2`} aria-hidden="true"><img src={logo} alt="" draggable="false" /></div>)}
     </div>
   </div>
 }

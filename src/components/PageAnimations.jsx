@@ -8,7 +8,14 @@ const textSequences = [
   { trigger: '.about', eyebrow: '.about-eyebrow', heading: '.about h2', body: '.about-content > *' },
   { trigger: '.why-besito', eyebrow: '.why-besito-eyebrow', heading: '.why-besito h2' },
   { trigger: '.packs', eyebrow: '.packs-eyebrow', heading: '.packs h2', body: '.packs-header p' },
-  { trigger: '.packs-showcase', eyebrow: '.packs-showcase-eyebrow', heading: '.packs-showcase h2', body: '.packs-showcase-header p' },
+  {
+    trigger: '.packs-showcase',
+    eyebrow: '.packs-showcase-eyebrow',
+    heading: '.packs-showcase h2',
+    body: '.packs-showcase-header p',
+    characterReveal: '.packs-showcase .character-reveal-letter',
+    characterAnimation: 'typewriter',
+  },
   { trigger: '.how-we-work', eyebrow: '.how-we-work-eyebrow', heading: '.how-we-work h2' },
   { trigger: '.faq', eyebrow: '.faq-eyebrow', heading: '.faq h2' },
   { trigger: '.final-cta', eyebrow: '.final-cta-eyebrow', heading: '.final-cta h2', body: '.final-cta p, .final-cta-button, .final-cta-message' },
@@ -16,7 +23,7 @@ const textSequences = [
 
 const structuralAnimations = [
   { trigger: '.hero', targets: '.hero-image', x: 34, y: 10, scale: 1.03, start: 'top 78%' },
-  { trigger: '.packs', targets: '.pack-card, .packs-inclusion, .brands', y: 32, stagger: 0.1 },
+  { trigger: '.packs', targets: '.packs-inclusion, .brands', y: 32, stagger: 0.1 },
   { trigger: '.packs-showcase', targets: '.pack-photo', y: 28, scale: 1.04, stagger: 0.12 },
   { trigger: '.how-we-work', targets: '.how-step', y: 30, stagger: 0.14 },
   { trigger: '.faq', targets: '.faq-item', y: 20, stagger: 0.09 },
@@ -47,7 +54,7 @@ export default function PageAnimations() {
         .from('.hero-content > p', { autoAlpha: 0, y: 16, duration: 0.65, ease: 'power2.out' }, '-=0.42')
         .from('.hero-actions, .hero-message', { autoAlpha: 0, y: 14, duration: 0.62, stagger: 0.1, ease: 'power2.out' }, '-=0.34')
 
-      textSequences.forEach(({ trigger, eyebrow, heading, body }) => {
+      textSequences.forEach(({ trigger, eyebrow, heading, body, characterReveal, characterAnimation }) => {
         if (!document.querySelector(trigger)) return
 
         const timeline = gsap.timeline({
@@ -62,7 +69,32 @@ export default function PageAnimations() {
         if (bodyElements.length) {
           timeline.from(bodyElements, { autoAlpha: 0, y: 14, duration: 0.65, stagger: 0.1, ease: 'power2.out' }, '-=0.45')
         }
+        const characterRevealElements = characterReveal ? gsap.utils.toArray(characterReveal) : []
+        if (characterRevealElements.length) {
+          timeline.from(characterRevealElements, {
+            autoAlpha: 0,
+            ...(characterAnimation === 'typewriter'
+              ? { duration: 0.12, stagger: 0.025, ease: 'none' }
+              : { scale: 1.65, duration: 0.4, stagger: 0.035, ease: 'back.out(1.35)' }),
+          })
+        }
       })
+
+      const aboutStatementLetters = gsap.utils.toArray('.about .character-reveal-letter')
+      if (aboutStatementLetters.length) {
+        gsap.from(aboutStatementLetters, {
+          autoAlpha: 0,
+          scale: 1.65,
+          duration: 0.4,
+          stagger: 0.035,
+          ease: 'back.out(1.35)',
+          scrollTrigger: {
+            trigger: '.about',
+            start: 'top 76%',
+            once: true,
+          },
+        })
+      }
 
       structuralAnimations.forEach(({ trigger, targets, x = 0, y, scale = 1, stagger, start = 'top 84%' }) => {
         const elements = gsap.utils.toArray(targets)
@@ -81,6 +113,23 @@ export default function PageAnimations() {
       })
 
       gsap.utils.toArray('.why-card').forEach((card, index) => {
+        gsap.from(card, {
+          autoAlpha: 0,
+          y: 76,
+          scale: 0.96,
+          duration: 0.9,
+          delay: index * 0.26,
+          ease: 'back.out(1.2)',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 82%',
+            toggleActions: 'play none none none',
+            once: true,
+          },
+        })
+      })
+
+      gsap.utils.toArray('.pack-card').forEach((card, index) => {
         gsap.from(card, {
           autoAlpha: 0,
           y: 76,

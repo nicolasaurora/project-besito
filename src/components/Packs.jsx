@@ -11,12 +11,11 @@ const Packs = () => {
         </span>
 
         <h2>
-          Vos elegís el equipo. Nosotros pensamos el snack.
+           Vos elegís el equipo nosotros pensamos la propuesta.
         </h2>
 
         <p>
-          Contanos cuántas personas son, cómo trabajan y qué presupuesto
-          tenés. Nosotros armamos una propuesta a medida.
+          Contanos cuantas personas son y que necesitan, nosotros armamos una propuesta a medida. 
         </p>
 
       </div>
@@ -35,7 +34,7 @@ const Packs = () => {
           <span>02</span>
           <h3>Presupuesto</h3>
           <p>
-            Buscamos la mejor combinación dentro de lo que querés invertir.
+            Buscamos la mejor combinación para tu presupuesto.
           </p>
         </article>
 

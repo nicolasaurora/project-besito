@@ -1,42 +1,37 @@
+import CharacterReveal from './CharacterReveal'
+
 const PacksShowcase = () => {
-    return (
-        <section className="packs-showcase">
+  return (
+    <section className="packs-showcase">
+      <div className="packs-showcase-header">
+        <span className="packs-showcase-eyebrow">BESITO EN ACCIÓN</span>
 
-            <div className="packs-showcase-header">
+        <h2>Un Besito distinto cada semana.</h2>
 
-                <span className="packs-showcase-eyebrow">
-                    BESITO EN ACCIÓN
-                </span>
+        <p>Bandejas que cambian para que el beneficio nunca se vuelva aburrido.</p>
 
-                <h2>
-                    Cada empresa tiene su propio Besito.
-                </h2>
+        <CharacterReveal
+          className="packs-showcase-statement"
+          text="Algunas de las propuestas que armamos para acompañar momentos de trabajo…"
+          keepWordsTogether
+        />
+      </div>
 
-                <p>
-                    Algunas de las propuestas que armamos para acompañar
-                    equipos, oficinas y momentos de trabajo.
-                </p>
+      <div className="packs-gallery">
+        <div className="pack-photo pack-photo-large">
+          <span>Foto pack 01</span>
+        </div>
 
-            </div>
+        <div className="pack-photo">
+          <span>Foto pack 02</span>
+        </div>
 
-            <div className="packs-gallery">
-
-                <div className="pack-photo pack-photo-large">
-                    <span>Foto pack 01</span>
-                </div>
-
-                <div className="pack-photo">
-                    <span>Foto pack 02</span>
-                </div>
-
-                <div className="pack-photo">
-                    <span>Foto pack 03</span>
-                </div>
-
-            </div>
-
-        </section>
-    )
+        <div className="pack-photo">
+          <span>Foto pack 03</span>
+        </div>
+      </div>
+    </section>
+  )
 }
 
 export default PacksShowcase
