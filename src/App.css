@@ -2375,4 +2375,9 @@ a {
   .final-cta h2 {
     font-size: 42px;
   }
+
+  .final-cta-form-footer {
+    align-items: center;
+    text-align: center;
+  }
 }

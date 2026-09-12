@@ -55,6 +55,7 @@ export default function BrandsCarousel() {
     if (!carousel || !track) return undefined
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const autoSpeed = window.matchMedia('(max-width: 768px)').matches ? 0.25 : 0.2
     let frameId
     let dragging = false
     let startX = 0
@@ -64,7 +65,7 @@ export default function BrandsCarousel() {
     const animate = () => {
       if (!dragging && !reducedMotion) {
         const loopWidth = track.scrollWidth / 3
-        autoPosition += 0.2
+        autoPosition += autoSpeed
         if (autoPosition >= loopWidth) autoPosition -= loopWidth
         carousel.scrollLeft = autoPosition
       }
