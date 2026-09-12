@@ -120,6 +120,11 @@ a {
   box-shadow: 5px 5px 0 var(--color-primary);
 }
 
+.navbar-menu-toggle,
+.navbar-mobile-cta {
+  display: none;
+}
+
 
 /* =========================
    NAVBAR - MOBILE
@@ -137,7 +142,39 @@ a {
   }
 
   .navbar-links {
-    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 20px;
+    right: 20px;
+    padding: 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+
+    background-color: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(56, 7, 3, 0.12);
+    border-radius: 18px;
+    box-shadow: 8px 8px 0 rgba(56, 7, 3, 0.12);
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  }
+
+  .navbar.is-menu-open .navbar-links {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .navbar-links a {
+    padding: 12px 10px;
+    font-size: 13px;
   }
 
   .navbar-logo img {
@@ -150,6 +187,55 @@ a {
 
   .navbar-button {
     display: none;
+  }
+
+  .navbar-mobile-cta {
+    display: block;
+    margin-top: 6px;
+    padding: 13px 16px !important;
+
+    background-color: var(--color-accent);
+    border-radius: 999px;
+    color: var(--color-white) !important;
+    text-align: center;
+  }
+
+  .navbar-menu-toggle {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+
+    display: grid;
+    place-content: center;
+    gap: 5px;
+
+    background: transparent;
+    border: 1px solid rgba(56, 7, 3, 0.2);
+    border-radius: 50%;
+    color: var(--color-primary);
+    cursor: pointer;
+  }
+
+  .navbar-menu-toggle span {
+    width: 19px;
+    height: 1.5px;
+
+    display: block;
+
+    background-color: currentColor;
+    transition: transform 0.22s ease, opacity 0.18s ease;
+  }
+
+  .navbar.is-menu-open .navbar-menu-toggle span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+
+  .navbar.is-menu-open .navbar-menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar.is-menu-open .navbar-menu-toggle span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
   }
 
 }
@@ -1718,4 +1804,498 @@ a {
     padding: 10px 14px;
   }
 
+}
+
+/* =========================
+   DESKTOP INTERMEDIO
+   Mantiene la composición de escritorio y reduce la densidad antes de tablet.
+========================= */
+
+@media (min-width: 769px) and (max-width: 1440px) {
+
+  .navbar {
+    height: 100px;
+  }
+
+  .navbar.is-scrolled {
+    height: 72px;
+  }
+
+  .navbar-logo img {
+    height: 118px;
+  }
+
+  .navbar.is-scrolled .navbar-logo img {
+    height: 54px;
+  }
+
+  .navbar-links {
+    gap: 22px;
+  }
+
+  .hero {
+    min-height: calc(100vh - 100px);
+    padding-block: 64px 72px;
+    gap: 44px;
+  }
+
+  .hero-image {
+    min-height: 440px;
+  }
+
+  .about,
+  .why-besito,
+  .packs {
+    padding-block: 100px;
+  }
+
+  .about {
+    gap: 4vw;
+  }
+
+  .about-content {
+    padding: 34px;
+  }
+
+  .why-besito-header,
+  .packs-header {
+    margin-bottom: 64px;
+  }
+
+  .why-besito-cards {
+    gap: 16px;
+  }
+
+  .why-card {
+    padding: 24px;
+    grid-template-rows: 18px 110px minmax(68px, 1fr);
+  }
+
+  .why-card h3 {
+    font-size: 28px;
+  }
+
+  .packs-options {
+    gap: 14px;
+  }
+
+  .pack-card {
+    padding: 24px;
+    grid-template-rows: 18px 110px minmax(68px, 1fr);
+  }
+
+  .pack-card h3 {
+    font-size: 28px;
+  }
+
+  .packs-inclusion {
+    gap: 40px;
+  }
+
+  .faq {
+    padding-block: 90px;
+    gap: 50px;
+  }
+
+  .faq-item summary {
+    font-size: 23px;
+  }
+
+  .final-cta {
+    padding-block: 90px;
+  }
+
+  .packs-showcase {
+    padding-block: 90px;
+  }
+
+  .packs-gallery {
+    height: 520px;
+  }
+}
+
+/* =========================
+   TABLET HORIZONTAL / DESKTOP ANGOSTO
+========================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .navbar {
+    height: 82px;
+    padding-inline: 4%;
+  }
+
+  .navbar.is-scrolled {
+    height: 66px;
+  }
+
+  .navbar-logo img {
+    height: 88px;
+    max-width: 132px;
+  }
+
+  .navbar.is-scrolled .navbar-logo img {
+    height: 50px;
+  }
+
+  .navbar-links {
+    align-items: center;
+    gap: 12px;
+  }
+
+  .navbar-links a {
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .navbar-button {
+    padding: 10px 14px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-block: 36px 44px;
+    gap: 28px;
+  }
+
+  .hero-image {
+    min-height: 370px;
+  }
+
+  .why-besito-cards,
+  .packs-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 680px;
+    margin-inline: auto;
+  }
+
+  .why-card,
+  .pack-card {
+    min-height: 280px;
+    padding: 28px;
+    grid-template-rows: 18px 104px minmax(68px, 1fr);
+    text-align: center;
+    justify-items: center;
+  }
+
+  .why-card p,
+  .pack-card p {
+    max-width: 270px;
+  }
+
+  .packs-tags {
+    justify-content: center;
+    justify-self: center;
+    max-width: 250px;
+  }
+
+  .packs-tags span {
+    min-width: 98px;
+    text-align: center;
+  }
+}
+
+/* =========================
+   TABLET VERTICAL Y MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .hero {
+    padding-block: 42px 52px;
+    gap: 36px;
+  }
+
+  .hero-content {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-eyebrow,
+  .hero p {
+    margin-inline: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(46px, 7.5vw, 58px);
+  }
+
+  .hero p {
+    margin-bottom: 30px;
+  }
+
+  .hero-image {
+    min-height: 320px;
+    margin-inline: 0;
+    border-radius: 24px;
+    box-shadow: 10px 10px 0 var(--color-lavender);
+  }
+
+  .hero-pack {
+    width: min(62%, 230px);
+    min-height: 210px;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 8px 9px 0 var(--color-accent);
+  }
+
+  .hero-sticker {
+    width: 76px;
+    height: 76px;
+    font-size: 13px;
+    line-height: 0.88;
+  }
+
+  .hero-sticker-top {
+    top: 12px;
+    right: 8px;
+  }
+
+  .hero-sticker-bottom {
+    bottom: 12px;
+    left: 8px;
+  }
+
+  .about {
+    padding-block: 64px;
+    gap: 36px;
+  }
+
+  .about-header,
+  .about-content {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .about-header {
+    max-width: 620px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .about h2 {
+    margin-inline: auto;
+    font-size: clamp(42px, 7vw, 48px);
+  }
+
+  .about .character-reveal {
+    margin: 22px auto 0;
+    font-size: clamp(20px, 3.5vw, 26px);
+    text-align: center;
+  }
+
+  .about-content {
+    justify-self: center;
+    padding: 30px 28px;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .about-content strong {
+    margin-top: 4px;
+    font-size: clamp(24px, 4vw, 30px);
+    line-height: 1.05;
+  }
+
+  .why-card,
+  .pack-card {
+    text-align: center;
+    justify-items: center;
+  }
+
+  .why-besito-eyebrow {
+    font-size: 13px;
+  }
+
+  .why-card p,
+  .pack-card p {
+    max-width: 520px;
+    font-size: 15px;
+    line-height: 1.65;
+    text-align: center;
+  }
+
+  .packs-tags {
+    width: 100%;
+    max-width: 460px;
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .packs-tags span {
+    min-width: 0;
+    padding: 10px 6px;
+    font-size: 10px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .faq-header {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .faq-eyebrow {
+    text-align: center;
+  }
+
+  .faq h2 {
+    margin-inline: auto;
+  }
+}
+
+/* =========================
+   CELULAR
+   Referencia: 390px de ancho
+========================= */
+
+@media (max-width: 430px) {
+
+  .hero {
+    padding-block: 34px 42px;
+    gap: 30px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 18px;
+    font-size: 11px;
+  }
+
+  .hero p {
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+
+  .hero-image {
+    min-height: 290px;
+  }
+
+  .hero-pack {
+    width: min(62%, 205px);
+    min-height: 190px;
+    padding: 18px;
+  }
+
+  .hero-pack img {
+    width: 88px;
+    height: 88px;
+  }
+
+  .hero-sticker {
+    width: 68px;
+    height: 68px;
+    font-size: 11px;
+  }
+
+  .about,
+  .why-besito,
+  .packs {
+    padding-block: 56px;
+  }
+
+  .about h2 {
+    font-size: 42px;
+  }
+
+  .about-content {
+    padding: 26px 22px;
+  }
+
+  .about-content p,
+  .why-card p,
+  .pack-card p {
+    font-size: 14px;
+  }
+
+  .why-besito-header,
+  .packs-header {
+    margin-bottom: 38px;
+  }
+
+  .why-besito-cards,
+  .packs-options {
+    gap: 14px;
+  }
+
+  .why-card,
+  .pack-card {
+    min-height: 250px;
+    padding: 24px 20px;
+  }
+
+  .why-card h3,
+  .pack-card h3 {
+    font-size: 28px;
+  }
+
+  .packs-inclusion {
+    margin-bottom: 36px;
+    padding-block: 28px;
+  }
+
+  .packs-inclusion-text h3 {
+    font-size: 32px;
+  }
+
+  .packs-tags span {
+    font-size: 9px;
+  }
+
+  .faq {
+    padding-block: 56px;
+    gap: 32px;
+  }
+
+  .faq h2 {
+    font-size: 44px;
+  }
+
+  .faq-item summary {
+    padding-block: 22px;
+    font-size: 19px;
+  }
+
+  .final-cta {
+    padding-block: 64px;
+  }
+
+  .final-cta h2 {
+    font-size: 46px;
+  }
+
+  .final-cta-form {
+    margin-bottom: 34px;
+  }
+
+  .packs-showcase {
+    padding-block: 56px;
+  }
+
+  .packs-showcase h2 {
+    font-size: 44px;
+  }
+
+  .packs-gallery {
+    gap: 12px;
+    margin-bottom: 42px;
+  }
+
+  .pack-photo,
+  .pack-photo-large {
+    min-height: 230px;
+  }
+
+  .pack-photo-large {
+    min-height: 320px;
+  }
 }

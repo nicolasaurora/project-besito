@@ -16,6 +16,7 @@ const About = () => {
 
                 <CharacterReveal
                     text="No vendemos fruta, vendemos ganas de que llegue el snack."
+                    keepWordsTogether
                 />
 
             </div>
