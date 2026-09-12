@@ -7,15 +7,15 @@ const Packs = () => {
       <div className="packs-header">
 
         <span className="packs-eyebrow">
-          PACKS A MEDIDA
+          COMO TRABAJAMOS
         </span>
 
         <h2>
-           Vos elegís el equipo nosotros pensamos la propuesta.
+           Una propuesta que se adapta a ustedes.
         </h2>
 
         <p>
-          Contanos cuantas personas son y que necesitan, nosotros armamos una propuesta a medida. 
+          Nos contás cuántas personas son, qué necesitan y cuál es tu presupuesto. Nosotros diseñamos una propuesta a medida.
         </p>
 
       </div>

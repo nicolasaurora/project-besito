@@ -18,7 +18,7 @@ const textSequences = [
   },
   { trigger: '.how-we-work', eyebrow: '.how-we-work-eyebrow', heading: '.how-we-work h2' },
   { trigger: '.faq', eyebrow: '.faq-eyebrow', heading: '.faq h2' },
-  { trigger: '.final-cta', eyebrow: '.final-cta-eyebrow', heading: '.final-cta h2', body: '.final-cta p, .final-cta-button, .final-cta-message' },
+  { trigger: '.final-cta', eyebrow: '.final-cta-eyebrow', heading: '.final-cta h2', body: '.final-cta > p, .final-cta-form, .final-cta-message' },
 ]
 
 const structuralAnimations = [
@@ -27,6 +27,7 @@ const structuralAnimations = [
   { trigger: '.packs-showcase', targets: '.pack-photo', y: 28, scale: 1.04, stagger: 0.12 },
   { trigger: '.how-we-work', targets: '.how-step', y: 30, stagger: 0.14 },
   { trigger: '.faq', targets: '.faq-item', y: 20, stagger: 0.09 },
+  { trigger: '.footer', targets: '.footer-brand, .footer-links, .footer-contact, .footer-copyright', y: 22, stagger: 0.1 },
 ]
 
 export default function PageAnimations() {
@@ -95,6 +96,20 @@ export default function PageAnimations() {
           },
         })
       }
+
+      gsap.fromTo('.packs-showcase',
+        { clipPath: 'inset(0 0 100% 0)' },
+        {
+          clipPath: 'inset(0 0 0% 0)',
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.packs-showcase',
+            start: 'top 82%',
+            once: true,
+          },
+        },
+      )
 
       structuralAnimations.forEach(({ trigger, targets, x = 0, y, scale = 1, stagger, start = 'top 84%' }) => {
         const elements = gsap.utils.toArray(targets)

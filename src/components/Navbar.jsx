@@ -6,7 +6,15 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    const updateNavbar = () => setIsScrolled(window.scrollY > 70)
+    const updateNavbar = () => {
+      const scrollPosition = window.scrollY
+
+      setIsScrolled(currentState => {
+        // Histeresis: evita que el cambio de altura alterne cerca de un único umbral.
+        if (currentState) return scrollPosition > 40
+        return scrollPosition > 90
+      })
+    }
     updateNavbar()
     window.addEventListener('scroll', updateNavbar, { passive: true })
     return () => window.removeEventListener('scroll', updateNavbar)
@@ -21,8 +29,7 @@ const Navbar = () => {
 
       <div className="navbar-links">
         <a href="#nosotros">Nosotros</a>
-        <a href="#packs">Packs</a>
-        <a href="#como-trabajamos">Cómo trabajamos</a>
+        <a href="#packs">Cómo trabajamos</a>
         <a href="#faq">Preguntas frecuentes</a>
       </div>
 

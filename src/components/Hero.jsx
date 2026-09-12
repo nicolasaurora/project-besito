@@ -30,15 +30,11 @@ const Hero = () => {
                         Quiero Besito en mi empresa
                     </a>
 
-                    <a href="#como-trabajamos" className="hero-button-secondary">
+                    <a href="#packs" className="hero-button-secondary">
                         Ver cómo trabajamos
                     </a>
 
                 </div>
-
-                <span className="hero-message">
-                    Un poquito mejor ya es un montón.
-                </span>
 
             </div>
 
