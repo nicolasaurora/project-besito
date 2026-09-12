@@ -2299,3 +2299,80 @@ a {
     min-height: 320px;
   }
 }
+
+/* =========================
+   CELULAR COMPACTO
+   Referencia: 360px de ancho
+========================= */
+
+@media (max-width: 360px) {
+
+  .navbar {
+    height: 86px;
+    padding-inline: 16px;
+  }
+
+  .navbar-logo img {
+    height: 68px;
+    max-width: 125px;
+  }
+
+  .hero {
+    padding-inline: 16px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .hero-image {
+    min-height: 270px;
+  }
+
+  .hero-pack {
+    width: min(60%, 185px);
+    min-height: 178px;
+  }
+
+  .hero-sticker {
+    width: 62px;
+    height: 62px;
+    font-size: 10px;
+  }
+
+  .about,
+  .why-besito,
+  .packs,
+  .faq,
+  .packs-showcase {
+    padding-inline: 16px;
+  }
+
+  .about h2,
+  .faq h2,
+  .packs-showcase h2 {
+    font-size: 40px;
+  }
+
+  .why-card,
+  .pack-card {
+    padding-inline: 18px;
+  }
+
+  .packs-tags {
+    gap: 6px;
+  }
+
+  .packs-tags span {
+    padding-inline: 4px;
+    font-size: 8px;
+  }
+
+  .final-cta {
+    padding-inline: 16px;
+  }
+
+  .final-cta h2 {
+    font-size: 42px;
+  }
+}

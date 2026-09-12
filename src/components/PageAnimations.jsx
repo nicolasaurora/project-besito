@@ -34,6 +34,8 @@ export default function PageAnimations() {
   useLayoutEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
 
+    const isMobileViewport = window.matchMedia('(max-width: 768px)').matches
+
     const context = gsap.context(() => {
       const navbarItems = gsap.utils.toArray('.navbar-logo, .navbar-links a, .navbar-button')
       const heroLines = gsap.utils.toArray('.hero .text-reveal-line > span')
@@ -41,19 +43,19 @@ export default function PageAnimations() {
       gsap.from('.navbar', { autoAlpha: 0, y: -30, duration: 0.7, ease: 'power3.out' })
       gsap.from(navbarItems, { autoAlpha: 0, y: -10, duration: 0.5, delay: 0.12, stagger: 0.08, ease: 'power2.out' })
 
-      const heroTimeline = gsap.timeline({ delay: 0.08 })
+      const heroTimeline = gsap.timeline({ delay: isMobileViewport ? 0.02 : 0.08 })
       heroTimeline
-        .from('.hero-eyebrow', { autoAlpha: 0, y: 14, duration: 0.5, ease: 'power2.out' })
+        .from('.hero-eyebrow', { autoAlpha: 0, y: 14, duration: isMobileViewport ? 0.38 : 0.5, ease: 'power2.out' })
         .from(heroLines, {
           autoAlpha: 0,
           y: 20,
           scale: 0.985,
-          duration: 0.82,
-          stagger: 0.12,
+          duration: isMobileViewport ? 0.6 : 0.82,
+          stagger: isMobileViewport ? 0.08 : 0.12,
           ease: 'power3.out',
         }, '-=0.1')
-        .from('.hero-content > p', { autoAlpha: 0, y: 16, duration: 0.65, ease: 'power2.out' }, '-=0.42')
-        .from('.hero-actions, .hero-message', { autoAlpha: 0, y: 14, duration: 0.62, stagger: 0.1, ease: 'power2.out' }, '-=0.34')
+        .from('.hero-content > p', { autoAlpha: 0, y: 16, duration: isMobileViewport ? 0.48 : 0.65, ease: 'power2.out' }, '-=0.34')
+        .from('.hero-actions, .hero-message', { autoAlpha: 0, y: 14, duration: isMobileViewport ? 0.48 : 0.62, stagger: 0.08, ease: 'power2.out' }, '-=0.26')
 
       textSequences.forEach(({ trigger, eyebrow, heading, body, characterReveal, characterAnimation }) => {
         if (!document.querySelector(trigger)) return
@@ -75,9 +77,9 @@ export default function PageAnimations() {
           timeline.from(characterRevealElements, {
             autoAlpha: 0,
             ...(characterAnimation === 'typewriter'
-              ? { duration: 0.12, stagger: 0.025, ease: 'none' }
+              ? { duration: 0.12, stagger: 0.02, ease: 'none' }
               : { scale: 1.65, duration: 0.4, stagger: 0.035, ease: 'back.out(1.35)' }),
-          })
+          }, characterAnimation === 'typewriter' ? '-=0.22' : undefined)
         }
       })
 
@@ -130,14 +132,14 @@ export default function PageAnimations() {
       gsap.utils.toArray('.why-card').forEach((card, index) => {
         gsap.from(card, {
           autoAlpha: 0,
-          y: 76,
+          y: isMobileViewport ? 44 : 76,
           scale: 0.96,
-          duration: 0.9,
-          delay: index * 0.26,
+          duration: isMobileViewport ? 0.62 : 0.9,
+          delay: index * (isMobileViewport ? 0.08 : 0.26),
           ease: 'back.out(1.2)',
           scrollTrigger: {
             trigger: card,
-            start: 'top 82%',
+            start: isMobileViewport ? 'top 88%' : 'top 82%',
             toggleActions: 'play none none none',
             once: true,
           },
@@ -147,14 +149,14 @@ export default function PageAnimations() {
       gsap.utils.toArray('.pack-card').forEach((card, index) => {
         gsap.from(card, {
           autoAlpha: 0,
-          y: 76,
+          y: isMobileViewport ? 44 : 76,
           scale: 0.96,
-          duration: 0.9,
-          delay: index * 0.26,
+          duration: isMobileViewport ? 0.62 : 0.9,
+          delay: index * (isMobileViewport ? 0.08 : 0.26),
           ease: 'back.out(1.2)',
           scrollTrigger: {
             trigger: card,
-            start: 'top 82%',
+            start: isMobileViewport ? 'top 88%' : 'top 82%',
             toggleActions: 'play none none none',
             once: true,
           },
