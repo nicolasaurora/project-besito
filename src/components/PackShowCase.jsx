@@ -6,13 +6,10 @@ const PacksShowcase = () => {
       <div className="packs-showcase-header">
         <span className="packs-showcase-eyebrow">BESITO EN ACCIÓN</span>
 
-        <h2>Un Besito distinto cada semana.</h2>
-
-        <p>Bandejas que cambian para que el beneficio nunca se vuelva aburrido.</p>
-
         <CharacterReveal
-          className="packs-showcase-statement"
-          text="Algunas de las propuestas que armamos para acompañar momentos de trabajo…"
+          as="h2"
+          className="packs-showcase-title"
+          text="Un Besito distinto cada semana."
           keepWordsTogether
         />
       </div>

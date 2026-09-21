@@ -24,7 +24,6 @@ function App() {
         <WhyBesito />
         <Packs />
         <PacksShowcase />
-        <Faq />
         <FinalCta />
         <Footer />
         <WhatsAppButton />

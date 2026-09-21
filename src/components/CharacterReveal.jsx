@@ -1,4 +1,4 @@
-export default function CharacterReveal({ text, className = '', keepWordsTogether = false }) {
+export default function CharacterReveal({ text, className = '', keepWordsTogether = false, as: Tag = 'h3' }) {
   const renderLetters = (word, wordIndex = 0) => (
     <span className={keepWordsTogether ? 'character-reveal-word' : undefined} key={`${word}-${wordIndex}`}>
       {[...word].map((character, index) => (
@@ -10,7 +10,7 @@ export default function CharacterReveal({ text, className = '', keepWordsTogethe
   )
 
   return (
-    <h3 className={`character-reveal ${className}`} aria-label={text}>
+    <Tag className={`character-reveal ${className}`} aria-label={text}>
       {keepWordsTogether
         ? text.split(' ').map((word, index) => (
           <span key={`${word}-${index}`}>
@@ -23,6 +23,6 @@ export default function CharacterReveal({ text, className = '', keepWordsTogethe
             {character === ' ' ? '\u00A0' : character}
           </span>
         ))}
-    </h3>
+    </Tag>
   )
 }

@@ -87,19 +87,42 @@ a {
 }
 
 .navbar-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
   display: flex;
-  gap: 32px;
+  gap: 40px;
 }
 
 .navbar-links a {
+  position: relative;
   color: var(--color-primary);
   text-decoration: none;
   font-size: 13px;
   transition: color 0.2s ease;
 }
 
+.navbar-links a::after {
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  border-radius: 999px;
+  content: '';
+  transform: translateX(-50%);
+  transition: width 0.24s ease;
+}
+
 .navbar-links a:hover {
   color: var(--color-accent);
+}
+
+.navbar-links a:hover::after,
+.navbar-links a:focus-visible::after {
+  width: 42px;
 }
 
 .navbar-button {
@@ -120,8 +143,7 @@ a {
   box-shadow: 5px 5px 0 var(--color-primary);
 }
 
-.navbar-menu-toggle,
-.navbar-mobile-cta {
+.navbar-menu-toggle {
   display: none;
 }
 
@@ -183,21 +205,6 @@ a {
 
   .navbar.is-scrolled .navbar-logo img {
     height: 56px;
-  }
-
-  .navbar-button {
-    display: none;
-  }
-
-  .navbar-mobile-cta {
-    display: block;
-    margin-top: 6px;
-    padding: 13px 16px !important;
-
-    background-color: var(--color-accent);
-    border-radius: 999px;
-    color: var(--color-white) !important;
-    text-align: center;
   }
 
   .navbar-menu-toggle {
@@ -289,6 +296,7 @@ a {
 .hero-actions {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
 }
 
@@ -306,12 +314,43 @@ a {
 .hero-button-primary {
   background-color: var(--color-accent);
   color: var(--color-white);
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .hero-button-primary:hover {
-  transform: translateY(-3px);
-  background-color: #e92c0e;
-  box-shadow: 5px 5px 0 var(--color-primary);
+  transform: scale(1.045);
+  box-shadow: 0 9px 18px rgba(56, 7, 3, 0.2);
+}
+
+.hero-button-primary .hero-button-label {
+  display: inline-block;
+}
+
+.hero-button-primary .hero-button-letter {
+  display: inline-block;
+}
+
+.hero-button-primary:hover .hero-button-letter {
+  animation: hero-button-letter-wave 0.3s ease-out both;
+  animation-delay: calc(var(--letter-index) * 0.014s);
+}
+
+@keyframes hero-button-letter-wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  48% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-button-primary:hover .hero-button-letter,
+  .final-cta-button:hover:not(:disabled) .final-cta-button-letter {
+    animation: none;
+  }
 }
 
 .hero-button-secondary {
@@ -321,8 +360,8 @@ a {
 
 .hero-button-secondary:hover {
   transform: translateY(-3px);
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-white);
+  color: var(--color-primary);
   box-shadow: 5px 5px 0 var(--color-lavender);
 }
 
@@ -785,44 +824,37 @@ a {
 
 .packs-options {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-
-  margin-bottom: 48px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  padding: 0;
+  margin: 0 auto 42px;
+  max-width: 1040px;
+  list-style: none;
 }
 
-.pack-card {
-  min-height: 280px;
-  padding: 28px;
+.pack-option {
+  min-height: 72px;
+  padding: 10px 0;
 
-  display: grid;
-  grid-template-rows: 18px 128px minmax(68px, 1fr);
-
-  background-color: var(--color-white);
-
-  border-radius: 24px;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
 }
 
-.pack-card span {
+.pack-option span {
+  flex: 0 0 auto;
   font-size: 12px;
   color: var(--color-accent);
 }
 
-.pack-card h3 {
+.pack-option h3 {
   margin: 0;
-  align-self: center;
-
-  font-size: 30px;
+  font-size: 25px;
   line-height: 1;
   font-weight: 500;
-}
-
-.pack-card p {
-  align-self: start;
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.7;
+  text-align: center;
 }
 
 .packs-button {
@@ -937,12 +969,18 @@ a {
     font-size: 16px;
   }
   .packs-options {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 18px;
+    margin-bottom: 36px;
   }
 
-  .pack-card {
-    min-height: 240px;
-    box-shadow: 7px 7px 0 var(--color-accent);
+  .pack-option {
+    min-height: 60px;
+    padding: 8px 0;
+  }
+
+  .pack-option h3 {
+    font-size: 26px;
   }
 
   .packs-inclusion {
@@ -1224,7 +1262,7 @@ a {
   align-items: center;
   text-align: center;
 
-  background-color: var(--color-black);
+  background-color: var(--color-primary);
   color: var(--color-pink);
 }
 
@@ -1239,7 +1277,7 @@ a {
   max-width: 1000px;
   margin-bottom: 28px;
 
-  font-size: clamp(52px, 7vw, 90px);
+  font-size: clamp(52px, 7vw, 80px);
   color: var(--color-pink);
   line-height: 0.95;
   font-weight: 500;
@@ -1254,7 +1292,7 @@ a {
 }
 
 .final-cta-button {
-  padding: 16px 28px;
+  padding: 14px 24px;
 
   background-color: var(--color-accent);
   color: var(--color-white);
@@ -1263,15 +1301,25 @@ a {
 
   text-decoration: none;
   font-size: 12px;
+  font-weight: 700;
   border: 0;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .final-cta-button:hover:not(:disabled) {
-  transform: translateY(-3px);
-  background-color: var(--color-accent);
-  box-shadow: 5px 5px 0 var(--color-pink);
+  transform: scale(1.045);
+  box-shadow: 0 9px 18px rgba(56, 7, 3, 0.2);
+}
+
+.final-cta-button-label,
+.final-cta-button-letter {
+  display: inline-block;
+}
+
+.final-cta-button:hover:not(:disabled) .final-cta-button-letter {
+  animation: hero-button-letter-wave 0.3s ease-out both;
+  animation-delay: calc(var(--letter-index) * 0.014s);
 }
 
 .final-cta-button:disabled {
@@ -1402,23 +1450,30 @@ a {
 ========================= */
 
 .footer {
-  padding: 14px 5% 18px;
+  padding: 3px 5% 5px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 2px;
   text-align: center;
 
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.footer-logo-frame {
+  width: clamp(230px, 24vw, 310px);
+  margin: 18px auto 56px;
+  height: 78px;
+  overflow: hidden;
 }
 
 .footer-logo {
   display: block;
-  width: clamp(230px, 24vw, 310px);
+  width: 100%;
   height: auto;
-  margin: 0 auto 2px;
+  transform: translateY(-37.5%);
 }
 
 .footer-brand {
@@ -1453,7 +1508,7 @@ a {
 
 .footer-contact {
   align-items: center;
-  gap: 5px;
+  gap: 2px;
 }
 
 .footer-contact-title {
@@ -1476,9 +1531,9 @@ a {
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--color-primary);
   border-radius: 50%;
-  color: var(--color-white);
+  color: var(--color-primary);
   font-size: 17px;
   opacity: 0.9;
 
@@ -1487,12 +1542,12 @@ a {
 
 .footer .footer-social-icon:hover {
   transform: translateY(-3px);
-  background-color: var(--color-white);
-  color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .footer-copyright {
-  margin: 2px 0 0;
+  margin: 0;
   font-size: 11px;
   opacity: 0.55;
 }
@@ -1500,7 +1555,7 @@ a {
 .footer a {
   width: fit-content;
 
-  color: var(--color-white);
+  color: var(--color-primary);
 
   text-decoration: none;
   font-size: 12px;
@@ -1524,12 +1579,13 @@ a {
 @media (max-width: 768px) {
 
   .footer {
-    padding: 14px 20px 18px;
-    gap: 10px;
+    padding: 3px 20px 5px;
+    gap: 2px;
   }
 
-  .footer-logo {
+  .footer-logo-frame {
     width: 230px;
+    height: 62px;
   }
 
   .footer-links {
@@ -1620,7 +1676,7 @@ a {
 }
 
 .packs-showcase h2 {
-  margin-bottom: 28px;
+  margin: 0;
 
   font-size: clamp(48px, 6vw, 80px);
   color: var(--color-primary);
@@ -1641,15 +1697,9 @@ a {
   white-space: nowrap;
 }
 
-.packs-showcase-statement {
-  max-width: 650px;
-  margin: 28px auto 0;
-  color: var(--color-primary);
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: inherit;
-  letter-spacing: normal;
-  line-height: 1.7;
+.packs-showcase-title {
+  max-width: 850px;
+  margin-inline: auto;
 }
 
 /* =========================
@@ -1876,15 +1926,10 @@ a {
   }
 
   .packs-options {
-    gap: 14px;
+    gap: 18px;
   }
 
-  .pack-card {
-    padding: 24px;
-    grid-template-rows: 18px 110px minmax(68px, 1fr);
-  }
-
-  .pack-card h3 {
+  .pack-option h3 {
     font-size: 28px;
   }
 
@@ -1972,8 +2017,13 @@ a {
     margin-inline: auto;
   }
 
-  .why-card,
-  .pack-card {
+  .packs-options {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  .why-card {
     min-height: 280px;
     padding: 28px;
     grid-template-rows: 18px 104px minmax(68px, 1fr);
@@ -1981,9 +2031,17 @@ a {
     justify-items: center;
   }
 
-  .why-card p,
-  .pack-card p {
+  .why-card p {
     max-width: 270px;
+  }
+
+  .pack-option {
+    min-height: 72px;
+    padding: 12px 14px;
+  }
+
+  .pack-option h3 {
+    font-size: 20px;
   }
 
   .packs-tags {
@@ -2100,8 +2158,7 @@ a {
     line-height: 1.05;
   }
 
-  .why-card,
-  .pack-card {
+  .why-card {
     text-align: center;
     justify-items: center;
   }
@@ -2110,8 +2167,7 @@ a {
     font-size: 13px;
   }
 
-  .why-card p,
-  .pack-card p {
+  .why-card p {
     max-width: 520px;
     font-size: 15px;
     line-height: 1.65;
@@ -2212,8 +2268,7 @@ a {
   }
 
   .about-content p,
-  .why-card p,
-  .pack-card p {
+  .why-card p {
     font-size: 14px;
   }
 
@@ -2227,15 +2282,18 @@ a {
     gap: 14px;
   }
 
-  .why-card,
-  .pack-card {
+  .why-card {
     min-height: 250px;
     padding: 24px 20px;
   }
 
-  .why-card h3,
-  .pack-card h3 {
+  .why-card h3 {
     font-size: 28px;
+  }
+
+  .packs-options {
+    gap: 12px 18px;
+    max-width: 620px;
   }
 
   .packs-inclusion {
@@ -2354,9 +2412,16 @@ a {
     font-size: 40px;
   }
 
-  .why-card,
-  .pack-card {
+  .why-card {
     padding-inline: 18px;
+  }
+
+  .pack-option {
+    padding-block: 18px;
+  }
+
+  .pack-option h3 {
+    font-size: 23px;
   }
 
   .packs-tags {
@@ -2379,5 +2444,239 @@ a {
   .final-cta-form-footer {
     align-items: center;
     text-align: center;
+  }
+}
+
+/* Las cards se apilan en móvil: no necesitan conservar la altura de la grilla de escritorio. */
+@media (max-width: 768px) {
+  .why-card {
+    min-height: 0;
+    padding: 22px 20px;
+    grid-template-rows: 18px auto auto;
+    row-gap: 18px;
+  }
+
+  .why-card p {
+    align-self: auto;
+    font-size: 13px;
+  }
+
+  .why-card h3 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 430px) {
+  .why-card {
+    padding: 20px 18px;
+    row-gap: 16px;
+  }
+
+  .why-card h3 {
+    font-size: 23px;
+  }
+
+  .why-card p {
+    font-size: 12px;
+  }
+}
+
+/* Interacción de las cards: sin borde/sombra roja fija y con respuesta al hover. */
+.why-card,
+.why-besito .why-card,
+.why-besito .why-card:nth-child(2),
+.why-besito .why-card:nth-child(3),
+.why-besito .why-card:nth-child(4) {
+  box-shadow: none;
+}
+
+.why-card.is-revealed {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.why-card.is-revealed:hover {
+  transform: scale(1.04) !important;
+  box-shadow: 0 9px 18px rgba(56, 7, 3, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-card {
+    transition: none;
+  }
+}
+
+/* En tablet y celular, cada opción funciona como un bloque compacto y centrado. */
+@media (max-width: 1024px) {
+  .pack-option {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pack-option span {
+    line-height: 1;
+  }
+
+  .pack-option h3 {
+    font-size: 20px;
+    line-height: 1.05;
+  }
+}
+
+@media (max-width: 768px) {
+  .packs-options {
+    gap: 12px 14px;
+    margin-bottom: 32px;
+  }
+
+  .pack-option {
+    min-height: 64px;
+    padding: 8px 2px;
+    gap: 5px;
+  }
+
+  .pack-option h3 {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 430px) {
+  .pack-option h3 {
+    font-size: 17px;
+  }
+
+  .pack-option span {
+    font-size: 10px;
+  }
+}
+
+/* Índice sticker: una señal cálida y compacta para cada variable de la propuesta. */
+.pack-option {
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+}
+
+.pack-option span {
+  position: static;
+  display: inline-grid;
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  place-items: center;
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  font-family: 'Martian Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 1;
+  transform: none;
+}
+
+.pack-option span::after {
+  display: none;
+}
+
+.pack-option h3 {
+  position: static;
+  z-index: auto;
+}
+
+@media (max-width: 1024px) {
+  .pack-option {
+    min-height: 64px;
+    gap: 7px;
+  }
+}
+
+@media (max-width: 430px) {
+  .pack-option {
+    min-height: 58px;
+    gap: 6px;
+  }
+
+  .pack-option span {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+    font-size: 10px;
+  }
+}
+
+/* Conceptos destacados: una lectura directa y liviana para explicar la propuesta. */
+.pack-option {
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.pack-option h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.pack-option h3::after {
+  width: 30px;
+  height: 2px;
+  background-color: var(--color-accent);
+  border-radius: 999px;
+  content: '';
+}
+
+@media (max-width: 1024px) {
+  .pack-option {
+    min-height: 64px;
+    gap: 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .pack-option {
+    min-height: 58px;
+    gap: 0;
+  }
+}
+
+/* En pantallas chicas, dos columnas reducen el largo de la sección sin perder jerarquía. */
+@media (max-width: 768px) {
+  .why-besito-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .why-card {
+    min-height: 0;
+    padding: 18px 14px;
+    row-gap: 14px;
+  }
+
+  .why-card h3 {
+    font-size: 22px;
+  }
+
+  .why-card p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 430px) {
+  .why-card {
+    padding: 16px 10px;
+    row-gap: 12px;
+  }
+
+  .why-card h3 {
+    font-size: 19px;
+  }
+
+  .why-card p {
+    font-size: 11px;
+    line-height: 1.45;
   }
 }

@@ -15,71 +15,29 @@ const Packs = () => {
         </h2>
 
         <p>
-          Nos contás cuántas personas son, qué necesitan y cuál es tu presupuesto. Nosotros diseñamos una propuesta a medida.
+          Contanos cómo es tu equipo. Nosotros armamos la propuesta y coordinamos la entrega.
         </p>
 
       </div>
 
-      <div className="packs-options">
+      <ol className="packs-options">
+        <li className="pack-option">
+          <h3>Cantidad</h3>
+        </li>
 
-        <article className="pack-card">
-          <span>01</span>
-          <h3>Cantidad de personas</h3>
-          <p>
-            Adaptamos la propuesta al tamaño de tu equipo.
-          </p>
-        </article>
-
-        <article className="pack-card">
-          <span>02</span>
+        <li className="pack-option">
           <h3>Presupuesto</h3>
-          <p>
-            Buscamos la mejor combinación para tu presupuesto.
-          </p>
-        </article>
+        </li>
 
-        <article className="pack-card">
-          <span>03</span>
+        <li className="pack-option">
           <h3>Frecuencia</h3>
-          <p>
-            Definimos cada cuánto querés que llegue Besito a la oficina.
-          </p>
-        </article>
+        </li>
 
-        <article className="pack-card">
-          <span>04</span>
+        <li className="pack-option">
           <h3>Preferencias</h3>
-          <p>
-            Tenemos en cuenta gustos, necesidades y opciones alimentarias.
-          </p>
-        </article>
+        </li>
 
-      </div>
-
-
-      <div className="packs-inclusion">
-
-        <div className="packs-inclusion-text">
-          <span>PARA TODOS</span>
-
-          <h3>
-            Que haya algo para todos.
-          </h3>
-
-          <p>
-            Tenemos en cuenta diferentes gustos, preferencias
-            y necesidades alimentarias.
-          </p>
-        </div>
-
-        <div className="packs-tags">
-          <span>Sin TACC</span>
-          <span>Vegano</span>
-          <span>Sin azúcar</span>
-          <span>Proteico</span>
-        </div>
-
-      </div>
+      </ol>
 
       <div className="brands">
         <span className="brands-title">MARCAS CON LAS QUE TRABAJAMOS</span>

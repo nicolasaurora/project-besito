@@ -24,7 +24,8 @@ const About = () => {
             <div className="about-content">
 
                 <p>
-                    Nacimos para hacer que esos pequeños momentos del día tengan algo más: un snack rico, un mate, algo para compartir o simplemente una pausa para recargar energía.
+                    Nacimos para sumar algo mejor a esos pequeños momentos del día: un snack rico, algo para compartir o una
+                    pausa para recargar energía.
                 </p>
 
                 <strong>

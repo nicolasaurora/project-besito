@@ -11,8 +11,7 @@ const textSequences = [
   {
     trigger: '.packs-showcase',
     eyebrow: '.packs-showcase-eyebrow',
-    heading: '.packs-showcase h2',
-    body: '.packs-showcase-header p',
+    heading: null,
     characterReveal: '.packs-showcase .character-reveal-letter',
     characterAnimation: 'typewriter',
   },
@@ -137,6 +136,7 @@ export default function PageAnimations() {
           duration: isMobileViewport ? 0.62 : 0.9,
           delay: index * (isMobileViewport ? 0.08 : 0.26),
           ease: 'back.out(1.2)',
+          onComplete: () => card.classList.add('is-revealed'),
           scrollTrigger: {
             trigger: card,
             start: isMobileViewport ? 'top 88%' : 'top 82%',
@@ -146,7 +146,7 @@ export default function PageAnimations() {
         })
       })
 
-      gsap.utils.toArray('.pack-card').forEach((card, index) => {
+      gsap.utils.toArray('.pack-option').forEach((card, index) => {
         gsap.from(card, {
           autoAlpha: 0,
           y: isMobileViewport ? 44 : 76,

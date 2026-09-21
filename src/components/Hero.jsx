@@ -2,6 +2,8 @@ import logoBesito from '../assets/besito-logo1.png'
 
 import RevealTitle from './RevealTitle'
 
+const primaryCtaText = 'Quiero Besito en mi empresa'
+
 const Hero = () => {
     return (
         <section className="hero" id="inicio">
@@ -21,17 +23,24 @@ const Hero = () => {
                 />
 
                 <p>
-                    Un mimo para recargar energias y seguir.
+                    Una propuesta de snacks pensada para que tu equipo disfrute la pausa y quiera que vuelva.
                 </p>
 
                 <div className="hero-actions">
 
                     <a href="#presupuesto" className="hero-button-primary">
-                        Quiero Besito en mi empresa
-                    </a>
-
-                    <a href="#packs" className="hero-button-secondary">
-                        Ver cómo trabajamos
+                        <span className="hero-button-label" aria-label={primaryCtaText}>
+                            {[...primaryCtaText].map((character, index) => (
+                                <span
+                                    className="hero-button-letter"
+                                    aria-hidden="true"
+                                    key={`${character}-${index}`}
+                                    style={{ '--letter-index': index }}
+                                >
+                                    {character === ' ' ? '\u00A0' : character}
+                                </span>
+                            ))}
+                        </span>
                     </a>
 
                 </div>

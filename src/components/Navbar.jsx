@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import logoBesito from '../assets/besito-logo1.png'
 
 const navigationLinks = [
-  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#nosotros', label: 'Quienes somos' },
   { href: '#packs', label: 'Cómo trabajamos' },
-  { href: '#faq', label: 'Preguntas frecuentes' },
+  { href: '#presupuesto', label: 'Solicitar presupuesto' },
 ]
 
 const Navbar = () => {
@@ -47,14 +47,7 @@ const Navbar = () => {
         {navigationLinks.map(({ href, label }) => (
           <a href={href} key={href} onClick={closeMenu}>{label}</a>
         ))}
-        <a href="#presupuesto" className="navbar-mobile-cta" onClick={closeMenu}>
-          Solicitar propuesta
-        </a>
       </div>
-
-      <a className="navbar-button" href="#presupuesto">
-        Solicitar propuesta
-      </a>
 
       <button
         className="navbar-menu-toggle"

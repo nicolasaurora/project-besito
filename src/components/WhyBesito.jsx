@@ -20,7 +20,7 @@ const WhyBesito = () => {
                     </h3>
 
                     <p>
-                        Si el empleado no lo quiere comer, no es un beneficio.
+                        Si el colaborador no tiene ganas de elegirlo, no funciona como beneficio.
                     </p>
                 </article>
 
@@ -32,7 +32,7 @@ const WhyBesito = () => {
                     </h3>
 
                     <p>
-                        El catálogo rota porque la novedad es parte del producto.
+                        Rotamos productos y combinaciones.
                     </p>
                 </article>
 
@@ -44,7 +44,7 @@ const WhyBesito = () => {
                     </h3>
 
                     <p>
-                        Opciones para diferentes necesidades y preferencias.
+                        Contemplamos distintos gustos y necesidades alimentarias.
                     </p>
                 </article>
 
@@ -52,11 +52,11 @@ const WhyBesito = () => {
                     <span className="why-card-number">04</span>
 
                     <h3>
-                       Más variedad.
+                       Más para elegir.
                     </h3>
 
                     <p>
-                        Armamos propuestas con variedad de marcas, sabores y formatos.
+                        Dulce, salado, proteico, tradicional y opciones especiales.
                     </p>
                 </article>
 

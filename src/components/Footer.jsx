@@ -1,11 +1,13 @@
 import { FaEnvelope, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
-import logoBesitoBlanco from '../assets/besito-logoblanco-fondo-transparente.png'
+import logoBesito from '../assets/Besito Logos individuales Fondo Transparente-03.png'
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-brand">
-        <img className="footer-logo" src={logoBesitoBlanco} alt="Besito" />
+        <div className="footer-logo-frame">
+          <img className="footer-logo" src={logoBesito} alt="Besito" />
+        </div>
 
         <p>Premium Snacks · Snacks para empresas</p>
       </div>

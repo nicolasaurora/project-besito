@@ -4,6 +4,7 @@ const formEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT
 
 const FinalCta = () => {
   const [status, setStatus] = useState('idle')
+  const buttonLabel = status === 'submitting' ? 'Enviando...' : 'Enviar propuesta'
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -34,11 +35,8 @@ const FinalCta = () => {
 
   return (
     <section className="final-cta" id="presupuesto">
-      <span className="final-cta-eyebrow">¿HABLAMOS?</span>
 
       <h2>Pedí besito para tu día a día, reuniones y eventos. </h2>
-
-      <p>Contanos sobre tu empresa y armamos una propuesta a medida.</p>
 
       <form className="final-cta-form" onSubmit={handleSubmit}>
         <div className="final-cta-form-field">
@@ -70,7 +68,18 @@ const FinalCta = () => {
 
         <div className="final-cta-form-footer">
           <button className="final-cta-button" type="submit" disabled={status === 'submitting'}>
-            {status === 'submitting' ? 'Enviando...' : 'Enviar propuesta'}
+            <span className="final-cta-button-label" aria-label={buttonLabel}>
+              {[...buttonLabel].map((character, index) => (
+                <span
+                  className="final-cta-button-letter"
+                  aria-hidden="true"
+                  key={`${character}-${index}`}
+                  style={{ '--letter-index': index }}
+                >
+                  {character === ' ' ? '\u00A0' : character}
+                </span>
+              ))}
+            </span>
           </button>
 
           <p className="final-cta-form-status" aria-live="polite">
@@ -80,8 +89,6 @@ const FinalCta = () => {
           </p>
         </div>
       </form>
-
-      <span className="final-cta-message">Un poquito mejor ya es un montón.</span>
     </section>
   )
 }
