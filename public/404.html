@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#380703" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" href="/favicon-512.png" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <title>Página no encontrada | Besito</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;600;700&family=Martian+Mono:wght@400;600;700&display=swap');
+
+      :root {
+        --primary: #380703;
+        --accent: #fc3212;
+        --pink: #fce5dd;
+        --white: #ffffff;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: var(--pink);
+        color: var(--primary);
+        font-family: 'Martian Mono', monospace;
+      }
+
+      main {
+        width: min(100% - 40px, 760px);
+        padding: clamp(36px, 7vw, 76px) 24px;
+        text-align: center;
+      }
+
+      .mark {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 28px;
+        border-radius: 18px;
+        box-shadow: 7px 7px 0 var(--accent);
+      }
+
+      .eyebrow {
+        display: block;
+        margin-bottom: 18px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+      }
+
+      h1 {
+        max-width: 660px;
+        margin: 0 auto 22px;
+        font-family: 'Gupter', Georgia, serif;
+        font-size: clamp(54px, 9vw, 106px);
+        font-weight: 600;
+        line-height: 0.88;
+      }
+
+      p {
+        max-width: 520px;
+        margin: 0 auto 32px;
+        font-size: clamp(13px, 1.7vw, 16px);
+        line-height: 1.7;
+      }
+
+      a {
+        display: inline-block;
+        padding: 14px 24px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: var(--white);
+        font-size: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      a:hover,
+      a:focus-visible {
+        transform: scale(1.045);
+        box-shadow: 0 9px 18px rgba(56, 7, 3, 0.2);
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 4px;
+      }
+
+      @media (max-width: 430px) {
+        .mark { width: 56px; height: 56px; margin-bottom: 22px; }
+        main { width: min(100% - 32px, 760px); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        a { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img class="mark" src="/favicon-512.png" alt="Besito" />
+      <span class="eyebrow">ERROR 404</span>
+      <h1>Este snack<br />se perdió.</h1>
+      <p>La página que buscás no existe o cambió de lugar. Volvamos a encontrar algo rico.</p>
+      <a href="/">Volver al inicio</a>
+    </main>
+  </body>
+</html>
