@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollTrigger)
 const textSequences = [
   { trigger: '.about', eyebrow: '.about-eyebrow', heading: '.about h2', body: '.about-content > *' },
   { trigger: '.why-besito', eyebrow: '.why-besito-eyebrow', heading: '.why-besito h2' },
-  { trigger: '.packs', eyebrow: '.packs-eyebrow', heading: '.packs h2', body: '.packs-header p' },
   {
     trigger: '.packs-showcase',
     eyebrow: '.packs-showcase-eyebrow',
@@ -17,7 +16,7 @@ const textSequences = [
   },
   { trigger: '.how-we-work', eyebrow: '.how-we-work-eyebrow', heading: '.how-we-work h2' },
   { trigger: '.faq', eyebrow: '.faq-eyebrow', heading: '.faq h2' },
-  { trigger: '.final-cta', eyebrow: '.final-cta-eyebrow', heading: '.final-cta h2', body: '.final-cta > p, .final-cta-form, .final-cta-message' },
+  { trigger: '.final-cta', eyebrow: '.final-cta-eyebrow', heading: '.final-cta h2', body: '.final-cta > p, .final-cta-message' },
 ]
 
 const structuralAnimations = [
@@ -26,7 +25,6 @@ const structuralAnimations = [
   { trigger: '.packs-showcase', targets: '.pack-photo', y: 28, scale: 1.04, stagger: 0.12 },
   { trigger: '.how-we-work', targets: '.how-step', y: 30, stagger: 0.14 },
   { trigger: '.faq', targets: '.faq-item', y: 20, stagger: 0.09 },
-  { trigger: '.footer', targets: '.footer-brand, .footer-links, .footer-contact, .footer-copyright', y: 22, stagger: 0.1 },
 ]
 
 export default function PageAnimations() {
@@ -42,23 +40,24 @@ export default function PageAnimations() {
       gsap.from('.navbar', { autoAlpha: 0, y: -30, duration: 0.7, ease: 'power3.out' })
       gsap.from(navbarItems, { autoAlpha: 0, y: -10, duration: 0.5, delay: 0.12, stagger: 0.08, ease: 'power2.out' })
 
-      const heroTimeline = gsap.timeline({ delay: isMobileViewport ? 0.02 : 0.08 })
+      const heroTimeline = gsap.timeline({ delay: 0 })
       heroTimeline
-        .from('.hero-eyebrow', { autoAlpha: 0, y: 14, duration: isMobileViewport ? 0.38 : 0.5, ease: 'power2.out' })
+        .from('.hero-eyebrow', { autoAlpha: 0, y: 14, duration: isMobileViewport ? 0.28 : 0.36, ease: 'power2.out' })
         .from(heroLines, {
           autoAlpha: 0,
           y: 20,
           scale: 0.985,
-          duration: isMobileViewport ? 0.6 : 0.82,
-          stagger: isMobileViewport ? 0.08 : 0.12,
+          duration: isMobileViewport ? 0.45 : 0.58,
+          stagger: isMobileViewport ? 0.05 : 0.075,
           ease: 'power3.out',
         }, '-=0.1')
-        .from('.hero-content > p', { autoAlpha: 0, y: 16, duration: isMobileViewport ? 0.48 : 0.65, ease: 'power2.out' }, '-=0.34')
-        .from('.hero-actions, .hero-message', { autoAlpha: 0, y: 14, duration: isMobileViewport ? 0.48 : 0.62, stagger: 0.08, ease: 'power2.out' }, '-=0.26')
+        .from('.hero-content > p', { autoAlpha: 0, y: 16, duration: isMobileViewport ? 0.34 : 0.44, ease: 'power2.out' }, '-=0.26')
+        .from('.hero-actions, .hero-message', { autoAlpha: 0, y: 14, duration: isMobileViewport ? 0.34 : 0.42, stagger: 0.05, ease: 'power2.out' }, '-=0.18')
 
       textSequences.forEach(({ trigger, eyebrow, heading, body, characterReveal, characterAnimation }) => {
         if (!document.querySelector(trigger)) return
 
+        const isFinalCta = trigger === '.final-cta'
         const timeline = gsap.timeline({
           scrollTrigger: { trigger, start: 'top 82%', once: true },
         })
@@ -66,10 +65,10 @@ export default function PageAnimations() {
         const headingElements = gsap.utils.toArray(heading)
         const bodyElements = body ? gsap.utils.toArray(body) : []
 
-        timeline.from(eyebrowElements, { autoAlpha: 0, y: 12, duration: 0.5, ease: 'power2.out' })
-        timeline.from(headingElements, { autoAlpha: 0, y: 30, duration: 0.9, ease: 'power3.out' }, '-=0.18')
+        timeline.from(eyebrowElements, { autoAlpha: 0, y: 12, duration: isFinalCta ? 0.4 : 0.5, ease: 'power2.out' })
+        timeline.from(headingElements, { autoAlpha: 0, y: 30, duration: isFinalCta ? 0.72 : 0.9, ease: 'power3.out' }, '-=0.18')
         if (bodyElements.length) {
-          timeline.from(bodyElements, { autoAlpha: 0, y: 14, duration: 0.65, stagger: 0.1, ease: 'power2.out' }, '-=0.45')
+          timeline.from(bodyElements, { autoAlpha: 0, y: 14, duration: isFinalCta ? 0.52 : 0.65, stagger: isFinalCta ? 0.07 : 0.1, ease: 'power2.out' }, '-=0.45')
         }
         const characterRevealElements = characterReveal ? gsap.utils.toArray(characterReveal) : []
         if (characterRevealElements.length) {
@@ -78,7 +77,9 @@ export default function PageAnimations() {
             ...(characterAnimation === 'typewriter'
               ? { duration: 0.12, stagger: 0.02, ease: 'none' }
               : { scale: 1.65, duration: 0.4, stagger: 0.035, ease: 'back.out(1.35)' }),
-          }, characterAnimation === 'typewriter' ? '-=0.22' : undefined)
+          }, characterAnimation === 'typewriter'
+            ? (trigger === '.packs-showcase' ? '-=0.5' : '-=0.22')
+            : undefined)
         }
       })
 
@@ -114,7 +115,7 @@ export default function PageAnimations() {
         },
       )
 
-      structuralAnimations.forEach(({ trigger, targets, x = 0, y, scale = 1, stagger, start = 'top 84%' }) => {
+      structuralAnimations.forEach(({ trigger, targets, x = 0, y, scale = 1, stagger, duration = 0.85, start = 'top 84%' }) => {
         const elements = gsap.utils.toArray(targets)
         if (!document.querySelector(trigger) || !elements.length) return
 
@@ -123,7 +124,7 @@ export default function PageAnimations() {
           x,
           y,
           scale,
-          duration: 0.85,
+          duration,
           ease: 'power3.out',
           stagger,
           scrollTrigger: { trigger, start, once: true },
