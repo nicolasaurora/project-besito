@@ -91,8 +91,10 @@ export default function PageAnimations() {
           stagger: 0.035,
           ease: 'back.out(1.35)',
           scrollTrigger: {
-            trigger: '.about',
-            start: 'top 76%',
+            // Dispara la frase cuando ella misma entra al viewport, no cuando
+            // empieza a entrar toda la sección About.
+            trigger: '.about .character-reveal',
+            start: 'top 82%',
             once: true,
           },
         })
