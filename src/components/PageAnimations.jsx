@@ -22,7 +22,7 @@ const textSequences = [
 
 const structuralAnimations = [
   { trigger: '.hero', targets: '.hero-image', x: 34, y: 10, scale: 1.03, start: 'top 78%' },
-  { trigger: '.packs', targets: '.packs-inclusion, .brands', y: 32, stagger: 0.1 },
+  { trigger: '.packs', targets: '.brands', y: 32, stagger: 0.1 },
   { trigger: '.packs-showcase', targets: '.pack-photo', y: 28, scale: 1.04, stagger: 0.12 },
   { trigger: '.how-we-work', targets: '.how-step', y: 30, stagger: 0.14 },
   { trigger: '.faq', targets: '.faq-item', y: 20, stagger: 0.09 },
