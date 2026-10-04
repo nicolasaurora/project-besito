@@ -88,8 +88,8 @@ export default function PageAnimations() {
         gsap.from(aboutStatementLetters, {
           autoAlpha: 0,
           scale: 1.65,
-          duration: 0.4,
-          stagger: 0.035,
+          duration: 0.25,
+          stagger: { amount: 0.75 },
           ease: 'back.out(1.35)',
           scrollTrigger: {
             // Dispara la frase cuando ella misma entra al viewport, no cuando
