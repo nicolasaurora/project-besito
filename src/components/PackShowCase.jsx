@@ -1,7 +1,7 @@
 import CharacterReveal from './CharacterReveal'
 import comboOne from '../assets/combos/combo-1.jpg'
 import comboTwo from '../assets/combos/combo-2.jpg'
-import comboThree from '../assets/combos/combo-3.jpg'
+import comboThree from '../assets/combos/combo-4.jpg'
 
 const PacksShowcase = () => {
   return (
