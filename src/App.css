@@ -383,41 +383,41 @@ a {
   align-items: center;
   justify-content: center;
 
-  border-radius: 30px;
-  border: 1px solid rgba(56, 7, 3, 0.12);
+  border-radius: 18px 68px 18px 68px;
+  border: 0;
   box-shadow: 14px 14px 0 var(--color-lavender);
-
-  background-color: var(--color-white);
+  background-color: transparent;
 }
 
-.hero-pack {
-  width: min(68%, 300px);
-  min-height: 370px;
-  padding: 34px 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 20px;
-  background-color: var(--color-primary);
-  box-shadow: 10px 12px 0 var(--color-accent);
-  transform: rotate(-7deg);
+.hero-image .hero-pack {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  min-height: 0;
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  box-shadow: none;
+  transform: none;
 }
 
-.hero-pack img {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  border-radius: 50%;
+.hero-pack .hero-pack-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
 }
 
-.hero-pack span {
-  color: var(--color-white);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  line-height: 1.45;
-  text-align: center;
+.hero-image .hero-pack::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.66) 100%);
+  box-shadow: inset 0 0 78px rgba(0, 0, 0, 0.74);
+  content: '';
+  pointer-events: none;
 }
 
 .hero-sticker {
@@ -433,6 +433,7 @@ a {
   font-weight: 600;
   line-height: 0.84;
   text-align: center;
+  box-shadow: 0 12px 24px rgba(56, 7, 3, 0.18);
 }
 
 .hero-sticker-top {
@@ -1614,6 +1615,7 @@ a {
 
 .pack-photo {
   min-height: 0;
+  position: relative;
 
   display: flex;
   align-items: center;
@@ -1623,16 +1625,45 @@ a {
 
   border-radius: 24px;
   overflow: hidden;
+  box-shadow: 0 24px 50px rgba(56, 7, 3, 0.38);
 }
 
 .pack-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+}
+
+.pack-photo-contain {
+  background-color: #403f3f;
+}
+
+.pack-photo-contain img {
+  padding: 0;
+  object-fit: contain;
+  transform: scale(1.45);
+  transform-origin: center 58%;
+}
+
+.pack-photo::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.66) 100%);
+  box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.74);
+  content: '';
+  pointer-events: none;
 }
 
 .pack-photo-large {
   grid-row: 1 / 3;
+  background-color: #403f3f;
+}
+
+.pack-photo-large img {
+  transform: scale(0.94);
+  transform-origin: center 60%;
 }
 
 .pack-photo span {
@@ -1738,6 +1769,10 @@ a {
 
   .pack-photo-large {
     min-height: 400px;
+  }
+
+  .pack-photo-contain img {
+    transform: scale(1.12);
   }
 
   .brand-logo {
@@ -1986,7 +2021,7 @@ a {
   .hero-image {
     min-height: 320px;
     margin-inline: 0;
-    border-radius: 24px;
+    border-radius: 14px 42px 14px 42px;
     box-shadow: 10px 10px 0 var(--color-lavender);
   }
 

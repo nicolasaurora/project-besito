@@ -1,4 +1,4 @@
-import logoBesito from '../assets/besito-logo1.png'
+import comboFive from '../assets/combos/combo-5.jpg'
 
 import RevealTitle from './RevealTitle'
 
@@ -50,8 +50,11 @@ const Hero = () => {
             <div className="hero-image" aria-label="Propuesta de snacks Besito">
                 <span className="hero-sticker hero-sticker-top">RICO<br />PRIMERO.</span>
                 <div className="hero-pack">
-                    <img src={logoBesito} alt="Besito" />
-                    <span>SNACKS PARA<br />EMPRESAS</span>
+                    <img
+                        className="hero-pack-photo"
+                        src={comboFive}
+                        alt="Combo Besito con una selección de snacks saludables"
+                    />
                 </div>
                 <span className="hero-sticker hero-sticker-bottom">SALUDABLE<br />DESPUES.</span>
             </div>
