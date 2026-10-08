@@ -115,6 +115,25 @@ export default function PageAnimations() {
         },
       )
 
+      const featureCaption = document.querySelector('.packs-showcase-feature-caption')
+      if (featureCaption) {
+        gsap.fromTo(
+          featureCaption,
+          { autoAlpha: 0, xPercent: -55 },
+          {
+            autoAlpha: 1,
+            xPercent: 0,
+            duration: 1.05,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: featureCaption,
+              start: 'top 90%',
+              once: true,
+            },
+          },
+        )
+      }
+
       structuralAnimations.forEach(({ trigger, targets, x = 0, y, scale = 1, stagger, duration = 0.85, start = 'top 84%' }) => {
         const elements = gsap.utils.toArray(targets)
         if (!document.querySelector(trigger) || !elements.length) return
