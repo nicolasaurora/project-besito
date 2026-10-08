@@ -385,7 +385,7 @@ a {
 
   border-radius: 18px 68px 18px 68px;
   border: 0;
-  box-shadow: 14px 14px 0 var(--color-lavender);
+  box-shadow: 14px 14px 0 rgba(202, 200, 228, 0.72);
   background-color: transparent;
 }
 
@@ -439,14 +439,14 @@ a {
 .hero-sticker-top {
   top: 30px;
   right: -25px;
-  background-color: var(--color-lavender);
+  background-color: rgba(202, 200, 228, 0.88);
   transform: rotate(10deg);
 }
 
 .hero-sticker-bottom {
   bottom: 24px;
   left: -30px;
-  background-color: var(--color-accent);
+  background-color: rgba(252, 50, 18, 0.88);
   color: var(--color-white);
   transform: rotate(-10deg);
 }
@@ -604,7 +604,7 @@ a {
   background-color: var(--color-pink);
   color: var(--color-primary);
   border-radius: 4px 42px 4px 42px;
-  box-shadow: 12px 12px 0 var(--color-accent);
+  box-shadow: 12px 12px 0 rgba(252, 50, 18, 0.72);
 }
 
 .about-content p {
@@ -647,7 +647,7 @@ a {
 
   .about-content {
     padding: 30px 26px;
-    box-shadow: 8px 8px 0 var(--color-accent);
+    box-shadow: 8px 8px 0 rgba(252, 50, 18, 0.72);
   }
 
 }
