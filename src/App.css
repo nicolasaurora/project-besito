@@ -1648,6 +1648,14 @@ a {
   transform-origin: center 58%;
 }
 
+.pack-photo-top-second img {
+  transform: scale(1.18);
+}
+
+.pack-photo-wide img {
+  transform: scale(1.32);
+}
+
 .pack-photo::after {
   position: absolute;
   inset: 0;
@@ -1951,6 +1959,13 @@ a {
   }
 }
 
+@media (min-width: 1025px) and (max-width: 1438px) {
+  .pack-photo-wide {
+    width: min(100%, 620px);
+    justify-self: center;
+  }
+}
+
 /* =========================
    TABLET HORIZONTAL / DESKTOP ANGOSTO
 ========================= */
@@ -2034,6 +2049,11 @@ a {
 
   .pack-option h3 {
     font-size: 20px;
+  }
+
+  .pack-photo-wide {
+    width: min(100%, 520px);
+    justify-self: center;
   }
 
 }

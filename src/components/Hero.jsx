@@ -1,4 +1,4 @@
-import comboFive from '../assets/combos/combo-2.jpg'
+import comboFive from '../assets/combos/bandeja-4k-2.jpeg'
 
 import RevealTitle from './RevealTitle'
 

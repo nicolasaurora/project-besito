@@ -1,7 +1,7 @@
 import CharacterReveal from './CharacterReveal'
-import comboOne from '../assets/combos/combo-1.jpg'
-import comboTwo from '../assets/combos/combo-5.jpg'
-import comboThree from '../assets/combos/combo-3.jpg'
+import comboOne from '../assets/combos/bandeja-4k-1.jpeg'
+import comboTwo from '../assets/combos/bandeja-4k-3.jpeg'
+import comboThree from '../assets/combos/bandeja-4k-4.png'
 
 const PacksShowcase = () => {
   return (
@@ -22,7 +22,7 @@ const PacksShowcase = () => {
           <img src={comboOne} alt="Combo Besito de snacks saludables" />
         </div>
 
-        <div className="pack-photo pack-photo-contain">
+        <div className="pack-photo pack-photo-contain pack-photo-top-second">
           <img src={comboTwo} alt="Combo Besito con snacks para empresas" />
         </div>
 
