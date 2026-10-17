@@ -50,9 +50,9 @@ export default function PageAnimations() {
           duration: isMobileViewport ? 0.45 : 0.58,
           stagger: isMobileViewport ? 0.05 : 0.075,
           ease: 'power3.out',
-        }, '-=0.1')
-        .from('.hero-content > p', { autoAlpha: 0, y: 16, duration: isMobileViewport ? 0.34 : 0.44, ease: 'power2.out' }, '-=0.26')
-        .from('.hero-actions, .hero-message', { autoAlpha: 0, y: 14, duration: isMobileViewport ? 0.34 : 0.42, stagger: 0.05, ease: 'power2.out' }, '-=0.18')
+        }, 0.08)
+        .from('.hero-content > p', { autoAlpha: 0, y: 16, duration: isMobileViewport ? 0.34 : 0.44, ease: 'power2.out' }, 0.28)
+        .from('.hero-actions, .hero-message', { autoAlpha: 0, y: 14, duration: isMobileViewport ? 0.34 : 0.42, stagger: 0.05, ease: 'power2.out' }, 0.42)
 
       textSequences.forEach(({ trigger, eyebrow, heading, body, characterReveal, characterAnimation }) => {
         if (!document.querySelector(trigger)) return
