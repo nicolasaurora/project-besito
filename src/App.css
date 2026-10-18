@@ -1762,6 +1762,7 @@ a {
   width: max-content;
   display: flex;
   align-items: center;
+  will-change: transform;
 }
 
 .brand-logo {

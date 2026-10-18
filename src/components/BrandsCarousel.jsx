@@ -55,19 +55,29 @@ export default function BrandsCarousel() {
     if (!carousel || !track) return undefined
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const autoSpeed = window.matchMedia('(max-width: 768px)').matches ? 0.25 : 0.2
+    const mobileViewport = window.matchMedia('(max-width: 768px)')
     let frameId
+    let previousTime
     let dragging = false
     let startX = 0
-    let startScroll = 0
-    let autoPosition = carousel.scrollLeft
+    let startPosition = 0
+    let autoPosition = 0
 
-    const animate = () => {
+    const renderPosition = () => {
+      track.style.transform = `translate3d(${-autoPosition}px, 0, 0)`
+    }
+
+    const animate = (time) => {
+      const elapsed = previousTime === undefined ? 0 : Math.min(time - previousTime, 100)
+      previousTime = time
+
       if (!dragging && !reducedMotion) {
         const loopWidth = track.scrollWidth / 3
-        autoPosition += autoSpeed
-        if (autoPosition >= loopWidth) autoPosition -= loopWidth
-        carousel.scrollLeft = autoPosition
+        const pixelsPerSecond = mobileViewport.matches ? 80 : 200
+        if (loopWidth > 0) {
+          autoPosition = (autoPosition + pixelsPerSecond * elapsed / 1000) % loopWidth
+          renderPosition()
+        }
       }
       frameId = requestAnimationFrame(animate)
     }
@@ -75,8 +85,7 @@ export default function BrandsCarousel() {
     const startDrag = (event) => {
       dragging = true
       startX = event.clientX
-      startScroll = carousel.scrollLeft
-      autoPosition = startScroll
+      startPosition = autoPosition
       carousel.classList.add('is-dragging')
       carousel.setPointerCapture(event.pointerId)
     }
@@ -84,11 +93,12 @@ export default function BrandsCarousel() {
     const drag = (event) => {
       if (!dragging) return
       const loopWidth = track.scrollWidth / 3
-      let nextPosition = startScroll - (event.clientX - startX)
+      if (loopWidth <= 0) return
+      let nextPosition = startPosition - (event.clientX - startX)
       while (nextPosition < 0) nextPosition += loopWidth
       while (nextPosition >= loopWidth) nextPosition -= loopWidth
-      carousel.scrollLeft = nextPosition
       autoPosition = nextPosition
+      renderPosition()
     }
 
     const endDrag = (event) => {
