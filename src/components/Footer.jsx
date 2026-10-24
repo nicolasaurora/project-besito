@@ -38,14 +38,14 @@ const Footer = () => {
         </div>
       </div>
 
-      <p className="footer-copyright">© 2026 Besito. Todos los derechos reservados.</p>
+      <p className="footer-copyright">© {new Date().getFullYear()} Besito. Todos los derechos reservados.</p>
       <a
         className="footer-credit"
         href="https://naurora-dev.netlify.app"
         target="_blank"
         rel="noreferrer"
       >
-        Diseñado y Desarrollado por Nicolás Aurora.
+        Desarrollado por Nicolás Aurora.
       </a>
     </footer>
   )

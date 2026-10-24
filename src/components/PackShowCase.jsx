@@ -1,19 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 import CharacterReveal from './CharacterReveal'
 import comboOne from '../assets/combos/bandeja-4k-1.jpeg'
-import comboTwo from '../assets/combos/bandeja-4k-3.jpeg'
+import comboCorporate from '../assets/combos/combo-corp.jpg'
 import comboThree from '../assets/combos/bandeja-4k-4.png'
 
 const PacksShowcase = () => {
   const sectionRef = useRef(null)
   const captionRef = useRef(null)
+  const corporateCaptionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
   const [isCaptionVisible, setIsCaptionVisible] = useState(false)
+  const [isCorporateCaptionVisible, setIsCorporateCaptionVisible] = useState(false)
 
   useEffect(() => {
     const section = sectionRef.current
     const caption = captionRef.current
-    if (!section || !caption) return undefined
+    const corporateCaption = corporateCaptionRef.current
+    if (!section || !caption || !corporateCaption) return undefined
 
     const sectionObserver = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return
@@ -29,12 +32,21 @@ const PacksShowcase = () => {
       captionObserver.disconnect()
     }, { threshold: 0.1 })
 
+    const corporateCaptionObserver = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+
+      setIsCorporateCaptionVisible(true)
+      corporateCaptionObserver.disconnect()
+    }, { threshold: 0.1 })
+
     sectionObserver.observe(section)
     captionObserver.observe(caption)
+    corporateCaptionObserver.observe(corporateCaption)
 
     return () => {
       sectionObserver.disconnect()
       captionObserver.disconnect()
+      corporateCaptionObserver.disconnect()
     }
   }, [])
 
@@ -59,8 +71,15 @@ const PacksShowcase = () => {
           <img src={comboOne} alt="Combo Besito de snacks saludables" />
         </div>
 
-        <div className="pack-photo pack-photo-contain pack-photo-top-second">
-          <img src={comboTwo} alt="Combo Besito con snacks para empresas" />
+        <div className="pack-photo pack-photo-corporate">
+          <img src={comboCorporate} alt="Besito en un evento corporativo" />
+        </div>
+
+        <div
+          className={`packs-showcase-corporate-caption ${isCorporateCaptionVisible ? 'is-visible' : ''}`}
+          ref={corporateCaptionRef}
+        >
+          <p>Besito en tu evento corporativo.</p>
         </div>
 
         <div className="pack-photo pack-photo-contain pack-photo-wide">
