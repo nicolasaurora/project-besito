@@ -38,7 +38,7 @@ const Navbar = () => {
   const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <nav className={`navbar ${isScrolled ? 'is-scrolled' : ''} ${isMenuOpen ? 'is-menu-open' : ''}`}>
+    <nav className={`navbar navbar-css-animate ${isScrolled ? 'is-scrolled' : ''} ${isMenuOpen ? 'is-menu-open' : ''}`}>
       <a href="#inicio" className="navbar-logo" onClick={closeMenu}>
         <img src={logoBesito} alt="Besito" />
       </a>

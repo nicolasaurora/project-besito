@@ -58,6 +58,67 @@ a {
   transition: height 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
 }
 
+/* Entrada inicial del navbar sin GSAP. */
+.navbar-css-animate {
+  animation: navbar-reveal 0.7s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar-css-animate .navbar-logo,
+.navbar-css-animate .navbar-links a,
+.navbar-css-animate .navbar-menu-toggle {
+  animation: navbar-item-reveal 0.5s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar-css-animate .navbar-logo,
+.navbar-css-animate .navbar-menu-toggle {
+  animation-delay: 0.12s;
+}
+
+.navbar-css-animate .navbar-links a:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.navbar-css-animate .navbar-links a:nth-child(2) {
+  animation-delay: 0.28s;
+}
+
+.navbar-css-animate .navbar-links a:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@keyframes navbar-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes navbar-item-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-css-animate,
+  .navbar-css-animate .navbar-logo,
+  .navbar-css-animate .navbar-links a,
+  .navbar-css-animate .navbar-menu-toggle {
+    animation: none;
+  }
+}
+
 .navbar.is-scrolled {
   height: 76px;
   box-shadow: 0 8px 24px rgba(56, 7, 3, 0.1);
@@ -268,6 +329,85 @@ a {
   max-width: 650px;
 }
 
+/* Animaci\u00f3n de entrada del Hero al cargar la p\u00e1gina. */
+.hero-css-animate .hero-eyebrow {
+  animation: hero-content-reveal 0.36s 0s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-css-animate .text-reveal-line > span {
+  animation: hero-title-reveal 0.58s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-css-animate .text-reveal-line:nth-child(1) > span {
+  animation-delay: 0.08s;
+}
+
+.hero-css-animate .text-reveal-line:nth-child(2) > span {
+  animation-delay: 0.155s;
+}
+
+.hero-css-animate .text-reveal-line:nth-child(3) > span {
+  animation-delay: 0.23s;
+}
+
+.hero-css-animate .hero-content > p {
+  animation: hero-content-reveal 0.44s 0.28s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-css-animate .hero-actions {
+  animation: hero-content-reveal 0.42s 0.42s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-css-animate .hero-image {
+  animation: hero-image-reveal 0.85s 0s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes hero-content-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-title-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-image-reveal {
+  from {
+    opacity: 0;
+    transform: translate(34px, 10px) scale(1.03);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-css-animate .hero-eyebrow,
+  .hero-css-animate .text-reveal-line > span,
+  .hero-css-animate .hero-content > p,
+  .hero-css-animate .hero-actions,
+  .hero-css-animate .hero-image {
+    animation: none;
+  }
+}
+
 .hero-eyebrow {
   display: block;
   margin-bottom: 24px;
@@ -469,6 +609,19 @@ a {
 
 @media (max-width: 768px) {
 
+  .hero-css-animate .hero-eyebrow {
+    animation-duration: 0.28s;
+  }
+
+  .hero-css-animate .text-reveal-line > span {
+    animation-duration: 0.45s;
+  }
+
+  .hero-css-animate .hero-content > p,
+  .hero-css-animate .hero-actions {
+    animation-duration: 0.34s;
+  }
+
   .hero {
     min-height: auto;
     padding: 60px 20px;
@@ -552,6 +705,56 @@ a {
   grid-row: 1;
 }
 
+/* Entrada de About sin GSAP. El observador agrega .is-visible antes de que
+   la sección alcance el viewport, evitando espacios vacíos en móvil. */
+.about-css-animate:not(.is-visible) .about-eyebrow,
+.about-css-animate:not(.is-visible) h2,
+.about-css-animate:not(.is-visible) .about-content,
+.about-css-animate:not(.is-visible) .character-reveal-letter {
+  opacity: 0;
+}
+
+.about-css-animate:not(.is-visible) .about-eyebrow,
+.about-css-animate:not(.is-visible) h2,
+.about-css-animate:not(.is-visible) .about-content {
+  transform: translateY(20px);
+}
+
+.about-css-animate.is-visible .about-eyebrow,
+.about-css-animate.is-visible h2,
+.about-css-animate.is-visible .about-content {
+  animation: about-content-reveal 0.65s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-css-animate.is-visible .character-reveal-letter {
+  animation: about-letter-reveal 0.2s both cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: calc(0.3s + (var(--character-index) * 0.012s));
+}
+
+@keyframes about-content-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes about-letter-reveal {
+  from {
+    opacity: 0;
+    transform: scale(1.65);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
 .about-eyebrow {
   display: block;
@@ -623,6 +826,23 @@ a {
   color: var(--color-accent);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .about-css-animate:not(.is-visible) .about-eyebrow,
+  .about-css-animate:not(.is-visible) h2,
+  .about-css-animate:not(.is-visible) .about-content,
+  .about-css-animate:not(.is-visible) .character-reveal-letter {
+    opacity: 1;
+    transform: none;
+  }
+
+  .about-css-animate.is-visible .about-eyebrow,
+  .about-css-animate.is-visible h2,
+  .about-css-animate.is-visible .about-content,
+  .about-css-animate.is-visible .character-reveal-letter {
+    animation: none;
+  }
+}
+
 
 /* =========================
    ABOUT - MOBILE
@@ -666,6 +886,64 @@ a {
 
 .why-besito-header {
   margin-bottom: 80px;
+}
+
+/* Entrada de Why Besito sin GSAP. */
+.why-css-animate:not(.is-visible) .why-besito-eyebrow,
+.why-css-animate:not(.is-visible) .why-card {
+  opacity: 0;
+}
+
+.why-css-animate:not(.is-visible) .why-besito-eyebrow {
+  transform: translateY(12px);
+}
+
+.why-css-animate:not(.is-visible) .why-card {
+  transform: translateY(var(--why-card-offset, 76px)) scale(0.96);
+}
+
+.why-css-animate.is-visible .why-besito-eyebrow {
+  animation: why-eyebrow-reveal 0.5s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.why-css-animate.is-visible .why-card {
+  animation: why-card-reveal 0.9s both cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.why-css-animate.is-visible .why-card:nth-child(2) {
+  animation-delay: 0.26s;
+}
+
+.why-css-animate.is-visible .why-card:nth-child(3) {
+  animation-delay: 0.52s;
+}
+
+.why-css-animate.is-visible .why-card:nth-child(4) {
+  animation-delay: 0.78s;
+}
+
+@keyframes why-eyebrow-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes why-card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(var(--why-card-offset, 76px)) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .why-besito-eyebrow {
@@ -759,6 +1037,26 @@ a {
 
 @media (max-width: 768px) {
 
+  .why-css-animate .why-card {
+    --why-card-offset: 44px;
+  }
+
+  .why-css-animate.is-visible .why-card {
+    animation-duration: 0.72s;
+  }
+
+  .why-css-animate.is-visible .why-card:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+
+  .why-css-animate.is-visible .why-card:nth-child(3) {
+    animation-delay: 0.24s;
+  }
+
+  .why-css-animate.is-visible .why-card:nth-child(4) {
+    animation-delay: 0.36s;
+  }
+
   .why-besito {
     padding: 80px 20px;
   }
@@ -836,6 +1134,64 @@ a {
   list-style: none;
 }
 
+/* Entrada de Packs sin GSAP. Cada opción se activa al alcanzar el viewport. */
+.packs-css-animate .pack-option:not(.is-visible),
+.packs-css-animate .brands:not(.is-visible) {
+  opacity: 0;
+}
+
+.packs-css-animate .pack-option:not(.is-visible) {
+  transform: translateY(var(--pack-option-offset, 76px)) scale(0.96);
+}
+
+.packs-css-animate .brands:not(.is-visible) {
+  transform: translateY(32px);
+}
+
+.packs-css-animate .pack-option.is-visible {
+  animation: pack-option-reveal 0.9s both cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.packs-css-animate .pack-option.is-visible:nth-child(2) {
+  animation-delay: 0.26s;
+}
+
+.packs-css-animate .pack-option.is-visible:nth-child(3) {
+  animation-delay: 0.52s;
+}
+
+.packs-css-animate .pack-option.is-visible:nth-child(4) {
+  animation-delay: 0.78s;
+}
+
+.packs-css-animate .brands.is-visible {
+  animation: brands-reveal 0.85s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes pack-option-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(var(--pack-option-offset, 76px)) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes brands-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .pack-option {
   min-height: 72px;
   padding: 10px 0;
@@ -860,6 +1216,26 @@ a {
 ========================= */
 
 @media (max-width: 768px) {
+
+  .packs-css-animate .pack-option {
+    --pack-option-offset: 44px;
+  }
+
+  .packs-css-animate .pack-option.is-visible {
+    animation-duration: 0.62s;
+  }
+
+  .packs-css-animate .pack-option.is-visible:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .packs-css-animate .pack-option.is-visible:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+
+  .packs-css-animate .pack-option.is-visible:nth-child(4) {
+    animation-delay: 0.24s;
+  }
 
   .packs {
     padding: 80px 20px;
@@ -893,260 +1269,25 @@ a {
 
 }
 
-
-/* =========================
-   HOW WE WORK
-========================= */
-
-.how-we-work {
-  min-height: calc(100vh - 80px);
-  padding: 120px 5%;
-
-  background-color: var(--color-white);
-  color: var(--color-primary);
-}
-
-.how-we-work-header {
-  max-width: 850px;
-  margin: 0 auto 80px;
-  text-align: center;
-}
-
-.how-we-work-eyebrow {
-  display: block;
-  margin-bottom: 24px;
-
-  font-size: 13px;
-  letter-spacing: 2px;
-}
-
-.how-we-work h2 {
-  font-size: clamp(48px, 6vw, 80px);
-  line-height: 0.95;
-  font-weight: 500;
-  color: var(--color-primary);
-}
-
-.how-we-work-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  border-top: 1px solid var(--color-primary);
-}
-
-.how-step {
-  min-height: 320px;
-  padding: 32px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.how-step:not(:last-child) {
-  border-right: 1px solid var(--color-primary);
-}
-
-.how-step span {
-  margin-bottom: auto;
-
-  color: var(--color-accent);
-
-  font-size: 12px;
-}
-
-.how-step h3 {
-  max-width: 300px;
-  margin-bottom: 20px;
-
-  font-size: 34px;
-  line-height: 1;
-  font-weight: 500;
-}
-
-.how-step p {
-  max-width: 280px;
-
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-/* =========================
-   HOW WE WORK - MOBILE
-========================= */
-
-@media (max-width: 768px) {
-
-  .how-we-work {
-    padding: 80px 20px;
+@media (prefers-reduced-motion: reduce) {
+  .packs-css-animate .pack-option:not(.is-visible),
+  .packs-css-animate .brands:not(.is-visible) {
+    opacity: 1;
+    transform: none;
   }
 
-  .how-we-work-header {
-    margin-bottom: 48px;
+  .packs-css-animate .pack-option.is-visible,
+  .packs-css-animate .brands.is-visible {
+    animation: none;
   }
-
-  .how-we-work h2 {
-    font-size: 48px;
-  }
-
-  .how-we-work-steps {
-    grid-template-columns: 1fr;
-  }
-
-  .how-step {
-    min-height: 260px;
-    padding: 32px 0;
-
-    border-bottom: 1px solid var(--color-primary);
-  }
-
-  .how-step:not(:last-child) {
-    border-right: none;
-  }
-
 }
 
 
-
-/* =========================
-   FAQ
-========================= */
-
-.faq {
-  padding: 100px 5%;
-
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 80px;
-
-  background-color: var(--color-pink);
-  color: var(--color-primary);
-}
-
-.faq-header {
-  max-width: 500px;
-}
-
-.faq-eyebrow {
-  display: block;
-  margin-bottom: 24px;
-
-  font-size: 13px;
-  letter-spacing: 2px;
-}
-
-.faq h2 {
-  font-size: clamp(48px, 5vw, 72px);
-  color: var(--color-primary);
-  line-height: 0.95;
-  font-weight: 500;
-}
-
-.faq-list {
-  border-top: 1px solid var(--color-primary);
-}
-
-.faq-item {
-  border-bottom: 1px solid var(--color-primary);
-}
-
-.faq-item summary {
-  padding: 28px 0;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  cursor: pointer;
-
-  font-family: 'Gupter', serif;
-  font-size: 25px;
-  font-weight: 500;
-
-  list-style: none;
-}
-
-.faq-item summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq-item summary::after {
-  content: '+';
-
-  margin-left: 20px;
-
-  color: var(--color-accent);
-
-  font-family: 'Martian Mono', monospace;
-  font-size: 22px;
-}
-
-.faq-item[open] summary::after {
+/*
   content: '−';
 }
 
-.faq-item p {
-  max-width: 650px;
-
-  padding: 0 0 28px;
-
-  font-size: 14px;
-  line-height: 1.7;
-}
-
 /* Apertura suave de cada respuesta sin cambiar la semántica de <details>. */
-.faq-item summary::after {
-  content: '+';
-  transition: transform 0.28s ease;
-}
-
-.faq-item[open] summary::after {
-  content: '+';
-  transform: rotate(45deg);
-}
-
-.faq-item[open] p {
-  animation: faq-answer-reveal 0.35s ease-out both;
-}
-
-@keyframes faq-answer-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* =========================
-   FAQ - MOBILE
-========================= */
-
-@media (max-width: 768px) {
-
-  .faq {
-    padding: 72px 20px;
-
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .faq h2 {
-    font-size: 48px;
-  }
-
-  .faq-item summary {
-    font-size: 21px;
-  }
-
-
-}
-
-
 /* =========================
    FINAL CTA
 ========================= */
@@ -1168,6 +1309,28 @@ a {
 
   font-size: 13px;
   letter-spacing: 2px;
+}
+
+/* El formulario permanece estático; sólo ingresa el bloque del botón. */
+.final-cta-css-animate .final-cta-form-footer:not(.is-visible) {
+  opacity: 0;
+  transform: translateX(-55%);
+}
+
+.final-cta-css-animate .final-cta-form-footer.is-visible {
+  animation: final-cta-button-reveal 1.05s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes final-cta-button-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(-55%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .final-cta h2 {
@@ -1312,6 +1475,17 @@ a {
   font-size: 28px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .final-cta-css-animate .final-cta-form-footer:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .final-cta-css-animate .final-cta-form-footer.is-visible {
+    animation: none;
+  }
+}
+
 /* =========================
    FINAL CTA - MOBILE
 ========================= */
@@ -1337,6 +1511,10 @@ a {
   .final-cta-form-footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .final-cta-button {
+    align-self: center;
   }
 
 }
@@ -1578,6 +1756,93 @@ a {
   text-align: center;
 }
 
+/* Entrada de PackShowCase sin GSAP. */
+.packs-showcase-css-animate:not(.is-visible) .packs-showcase-eyebrow,
+.packs-showcase-css-animate:not(.is-visible) .character-reveal-letter,
+.packs-showcase-css-animate:not(.is-visible) .pack-photo,
+.packs-showcase-feature-caption:not(.is-visible) {
+  opacity: 0;
+}
+
+.packs-showcase-css-animate:not(.is-visible) .packs-showcase-eyebrow {
+  transform: translateY(12px);
+}
+
+.packs-showcase-css-animate:not(.is-visible) .pack-photo {
+  transform: translateY(28px) scale(1.04);
+}
+
+.packs-showcase-css-animate.is-visible .packs-showcase-eyebrow {
+  animation: packs-showcase-eyebrow-reveal 0.5s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.packs-showcase-css-animate.is-visible .character-reveal-letter {
+  animation: packs-showcase-letter-reveal 0.12s both linear;
+  animation-delay: calc(var(--character-index) * 0.02s);
+}
+
+.packs-showcase-css-animate.is-visible .pack-photo {
+  animation: packs-showcase-photo-reveal 0.85s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.packs-showcase-css-animate.is-visible .pack-photo:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.packs-showcase-css-animate.is-visible .pack-photo:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.packs-showcase-feature-caption.is-visible {
+  animation: packs-showcase-caption-reveal 1.05s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes packs-showcase-eyebrow-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes packs-showcase-letter-reveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes packs-showcase-photo-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes packs-showcase-caption-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(-55%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .packs-showcase-eyebrow {
   display: block;
   margin-bottom: 24px;
@@ -1736,6 +2001,23 @@ a {
   font-size: 12px;
   letter-spacing: 1px;
   opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .packs-showcase-css-animate:not(.is-visible) .packs-showcase-eyebrow,
+  .packs-showcase-css-animate:not(.is-visible) .character-reveal-letter,
+  .packs-showcase-css-animate:not(.is-visible) .pack-photo,
+  .packs-showcase-feature-caption:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .packs-showcase-css-animate.is-visible .packs-showcase-eyebrow,
+  .packs-showcase-css-animate.is-visible .character-reveal-letter,
+  .packs-showcase-css-animate.is-visible .pack-photo,
+  .packs-showcase-feature-caption.is-visible {
+    animation: none;
+  }
 }
 
 
@@ -1950,15 +2232,6 @@ a {
 
   .pack-option h3 {
     font-size: 28px;
-  }
-
-  .faq {
-    padding-block: 90px;
-    gap: 50px;
-  }
-
-  .faq-item summary {
-    font-size: 23px;
   }
 
   .final-cta {
@@ -2207,18 +2480,6 @@ a {
     text-align: center;
   }
 
-  .faq-header {
-    margin-inline: auto;
-    text-align: center;
-  }
-
-  .faq-eyebrow {
-    text-align: center;
-  }
-
-  .faq h2 {
-    margin-inline: auto;
-  }
 }
 
 /* =========================
@@ -2311,20 +2572,6 @@ a {
     max-width: 620px;
   }
 
-  .faq {
-    padding-block: 56px;
-    gap: 32px;
-  }
-
-  .faq h2 {
-    font-size: 44px;
-  }
-
-  .faq-item summary {
-    padding-block: 22px;
-    font-size: 19px;
-  }
-
   .final-cta {
     padding-block: 64px;
   }
@@ -2403,13 +2650,11 @@ a {
   .about,
   .why-besito,
   .packs,
-  .faq,
   .packs-showcase {
     padding-inline: 16px;
   }
 
   .about h2,
-  .faq h2,
   .packs-showcase h2 {
     font-size: 40px;
   }
@@ -2497,18 +2742,31 @@ a {
   box-shadow: none;
 }
 
-.why-card.is-revealed {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.why-card.is-revealed,
+.why-css-animate.is-visible .why-card {
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.34s ease;
 }
 
-.why-card.is-revealed:hover {
-  transform: scale(1.04) !important;
-  box-shadow: 0 9px 18px rgba(56, 7, 3, 0.2);
+.why-card.is-revealed:hover,
+.why-css-animate.is-visible .why-card:hover {
+  transform: scale(1.015) !important;
+  box-shadow: 0 7px 16px rgba(56, 7, 3, 0.14);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .why-card {
     transition: none;
+  }
+
+  .why-css-animate:not(.is-visible) .why-besito-eyebrow,
+  .why-css-animate:not(.is-visible) .why-card {
+    opacity: 1;
+    transform: none;
+  }
+
+  .why-css-animate.is-visible .why-besito-eyebrow,
+  .why-css-animate.is-visible .why-card {
+    animation: none;
   }
 }
 

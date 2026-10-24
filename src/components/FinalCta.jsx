@@ -1,10 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const formEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT
 
 const FinalCta = () => {
+  const footerRef = useRef(null)
   const [status, setStatus] = useState('idle')
+  const [isFooterVisible, setIsFooterVisible] = useState(false)
   const buttonLabel = status === 'submitting' ? 'Enviando...' : 'Enviar propuesta'
+
+  useEffect(() => {
+    const footer = footerRef.current
+    if (!footer) return undefined
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+
+      setIsFooterVisible(true)
+      observer.disconnect()
+    }, { threshold: 0.1 })
+
+    observer.observe(footer)
+
+    return () => observer.disconnect()
+  }, [])
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -34,7 +52,7 @@ const FinalCta = () => {
   }
 
   return (
-    <section className="final-cta" id="presupuesto">
+    <section className="final-cta final-cta-css-animate" id="presupuesto">
 
       <h2>Pedí besito para tu día a día, reuniones y eventos. </h2>
 
@@ -66,7 +84,10 @@ const FinalCta = () => {
 
         <input className="form-honeypot" type="text" name="_gotcha" tabIndex="-1" autoComplete="off" aria-hidden="true" />
 
-        <div className="final-cta-form-footer">
+        <div
+          className={`final-cta-form-footer ${isFooterVisible ? 'is-visible' : ''}`}
+          ref={footerRef}
+        >
           <button className="final-cta-button" type="submit" disabled={status === 'submitting'}>
             <span className="final-cta-button-label" aria-label={buttonLabel}>
               {[...buttonLabel].map((character, index) => (

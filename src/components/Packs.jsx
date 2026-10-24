@@ -1,8 +1,30 @@
+import { useEffect, useRef } from 'react'
 import BrandsCarousel from './BrandsCarousel'
 
 const Packs = () => {
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return undefined
+
+    const animatedElements = section.querySelectorAll('.pack-option, .brands')
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+
+        entry.target.classList.add('is-visible')
+        observer.unobserve(entry.target)
+      })
+    }, { threshold: 0.1 })
+
+    animatedElements.forEach(element => observer.observe(element))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="packs" id="packs">
+    <section className="packs packs-css-animate" id="packs" ref={sectionRef}>
 
       <div className="packs-header">
 

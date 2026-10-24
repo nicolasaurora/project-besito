@@ -6,7 +6,7 @@ const primaryCtaText = 'Quiero Besito en mi empresa'
 
 const Hero = () => {
     return (
-        <section className="hero" id="inicio">
+        <section className="hero hero-css-animate" id="inicio">
 
             <div className="hero-content">
 

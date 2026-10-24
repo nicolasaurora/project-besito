@@ -10,7 +10,7 @@ La página presenta la marca, sus propuestas y permite que potenciales clientes 
 
 - React y Vite
 - CSS
-- GSAP y ScrollTrigger para animaciones
+- Animaciones CSS e IntersectionObserver para entradas por viewport
 - React Icons
 - Formspree para el formulario de contacto
 - Netlify para el despliegue

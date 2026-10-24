@@ -1,6 +1,31 @@
+import { useEffect, useRef, useState } from 'react'
+
 const WhyBesito = () => {
+    const sectionRef = useRef(null)
+    const [isVisible, setIsVisible] = useState(false)
+
+    useEffect(() => {
+        const section = sectionRef.current
+        if (!section) return undefined
+
+        const observer = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) return
+
+            setIsVisible(true)
+            observer.disconnect()
+        }, { threshold: 0.28 })
+
+        observer.observe(section)
+
+        return () => observer.disconnect()
+    }, [])
+
     return (
-        <section className="why-besito" id="porque-besito">
+        <section
+            className={`why-besito why-css-animate ${isVisible ? 'is-visible' : ''}`}
+            id="porque-besito"
+            ref={sectionRef}
+        >
 
             <div className="why-besito-header">
 

@@ -1,8 +1,34 @@
+import { useEffect, useRef, useState } from 'react'
 import CharacterReveal from './CharacterReveal'
 
 const About = () => {
+    const sectionRef = useRef(null)
+    const [isVisible, setIsVisible] = useState(false)
+
+    useEffect(() => {
+        const section = sectionRef.current
+        if (!section) return undefined
+
+        const observer = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) return
+
+            setIsVisible(true)
+            observer.disconnect()
+        }, {
+            threshold: 0.05,
+        })
+
+        observer.observe(section)
+
+        return () => observer.disconnect()
+    }, [])
+
     return (
-        <section className="about" id="nosotros">
+        <section
+            className={`about about-css-animate ${isVisible ? 'is-visible' : ''}`}
+            id="nosotros"
+            ref={sectionRef}
+        >
 
             <div className="about-header">
 
